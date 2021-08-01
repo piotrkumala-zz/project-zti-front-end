@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { setSurvey } from '../store/survey/survey.actions';
 import { State } from '../store/state';
 import { setId } from '../store/id/id.actions';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,26 +14,34 @@ import { setId } from '../store/id/id.actions';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnDestroy {
-  private subscription: Subscription;
   public survey: ClientSurvey = {};
+  private subscription: Subscription;
+
   constructor(
     private surveyService: SurveyControllerService,
-    private store: Store<State>
+    private store: Store<State>,
+    private activatedRoute: ActivatedRoute
   ) {
     this.subscription = store.select('survey').subscribe((survey) => {
       this.survey = survey;
     });
-    this.subscription.add(
-      store.select('id').subscribe((id) => {
-        this.surveyService
-          .getSurvey({ id: id })
-          .subscribe((data) =>
-            this.store.dispatch(setSurvey({ survey: data }))
-          );
-      })
-    );
-
-    store.dispatch(setId({ id: 'f3422e85-41a5-4e0d-8a85-6175c28078b2' }));
+    this.subscription
+      .add(
+        store.select('id').subscribe((id) => {
+          this.surveyService
+            .getSurvey({ id: id })
+            .subscribe((data) =>
+              this.store.dispatch(setSurvey({ survey: data }))
+            );
+        })
+      )
+      .add(
+        activatedRoute.queryParams.subscribe((x) => {
+          if (x.id) {
+            store.dispatch(setId({ id: x.id }));
+          }
+        })
+      );
   }
 
   ngOnDestroy(): void {

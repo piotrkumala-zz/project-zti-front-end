@@ -12,14 +12,78 @@
         <note priority="1" from="description">surveyTitle</note>
       </trans-unit>
       <trans-unit id="936665471524982924" datatype="html">
-      <source>ZTI - Survey system</source>
-      <target>ZTI - system ankietowy</target>
-      <context-group purpose="location">
-        <context context-type="sourcefile">src/app/componenets/header/header.component.html</context>
-        <context context-type="linenumber">2</context>
-      </context-group>
-      <note priority="1" from="description">appName</note>
-    </trans-unit>
+        <source>ZTI - Survey system</source>
+        <target>ZTI - system ankietowy</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componenets/header/header.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">appName</note>
+      </trans-unit>
+      <trans-unit id="8956152230410715816" datatype="html">
+        <source>Search for survey</source>
+        <target>Wyszukaj ankietę</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componenets/header/header.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">searchForSurvey</note>
+      </trans-unit>
+      <trans-unit id="869350137638622132" datatype="html">
+        <source>Insert survey id</source>
+        <target>Wpisz id ankiety</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/componenets/header/survey-search-dialog/survey-search-dialog.component.html
+          </context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Insert survey id</note>
+      </trans-unit>
+      <trans-unit id="2854528293360149376" datatype="html">
+        <source>Survey Id</source>
+        <target>Id ankiety</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/componenets/header/survey-search-dialog/survey-search-dialog.component.html
+          </context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Survey Id</note>
+      </trans-unit>
+      <trans-unit id="3498970204767096106" datatype="html">
+        <source>This field is required</source>
+        <target>Pole wymagane</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/componenets/header/survey-search-dialog/survey-search-dialog.component.html
+          </context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+        <note priority="1" from="description">Field required</note>
+      </trans-unit>
+      <trans-unit id="3884042608461765727" datatype="html">
+        <source>Enter proper UUID</source>
+        <target>Podaj poprawny format UUID</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/componenets/header/survey-search-dialog/survey-search-dialog.component.html
+          </context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+        <note priority="1" from="description">Bad UUID format</note>
+      </trans-unit>
+      <trans-unit id="8720977247725652816" datatype="html">
+        <source>Ok</source>
+        <target>Ok</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">
+            src/app/componenets/header/survey-search-dialog/survey-search-dialog.component.html
+          </context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Ok</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>

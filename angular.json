@@ -27,7 +27,9 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/project-zti",
-            "localize": ["pl"],
+            "localize": [
+              "pl"
+            ],
             "aot": true,
             "index": "src/index.html",
             "main": "src/main.ts",
