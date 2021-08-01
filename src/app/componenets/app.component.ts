@@ -15,7 +15,6 @@ import { setId } from '../store/id/id.actions';
 export class AppComponent implements OnDestroy {
   private subscription: Subscription;
   public survey: ClientSurvey = {};
-  public title: String = 'project-zti';
   constructor(
     private surveyService: SurveyControllerService,
     private store: Store<State>
