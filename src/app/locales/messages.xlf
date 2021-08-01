@@ -5,10 +5,18 @@
       <trans-unit id="9104695746588509352" datatype="html">
         <source>Survey Title</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="sourcefile">src/app/componenets/app.component.html</context>
+          <context context-type="linenumber">7</context>
         </context-group>
         <note priority="1" from="description">surveyTitle</note>
+      </trans-unit>
+      <trans-unit id="936665471524982924" datatype="html">
+        <source>ZTI - Survey system</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componenets/header/header.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">appName</note>
       </trans-unit>
     </body>
   </file>
