@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SurveyControllerService } from './api/services/survey-controller.service';
-import { ClientSurvey } from './api/models/client-survey';
+import { SurveyControllerService } from '../api/services/survey-controller.service';
+import { ClientSurvey } from '../api/models/client-survey';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { ClientSurvey } from './api/models/client-survey';
 })
 export class AppComponent implements OnInit {
   public surveys: ClientSurvey[] = [];
-
+  public title: String = 'project-zti';
   constructor(private surveyService: SurveyControllerService) {}
 
   ngOnInit(): void {
