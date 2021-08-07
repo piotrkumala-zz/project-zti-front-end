@@ -13,7 +13,7 @@ import { State } from "../../store/state";
 export class HeaderComponent {
   constructor(private dialog: MatDialog, private store: Store<State>) {}
 
-  searchSurvey() {
+  searchSurvey(): void {
     const dialogRef = this.dialog.open(SurveySearchDialogComponent);
     dialogRef.afterClosed().subscribe((result: string) => {
       this.store.dispatch(setId({ id: result }));

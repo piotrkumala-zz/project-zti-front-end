@@ -13,4 +13,4 @@ const _surveyReducer = createReducer(
 export const surveyReducer = (
   state: ClientSurvey | undefined,
   action: Action
-) => _surveyReducer(state, action);
+): ClientSurvey => _surveyReducer(state, action);
