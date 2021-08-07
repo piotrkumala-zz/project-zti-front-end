@@ -1,11 +1,13 @@
 /* tslint:disable */
 /* eslint-disable */
+// noinspection JSUnusedGlobalSymbols,TypeScriptAbstractClassConstructorCanBeMadeProtected
+
 import {
   HttpHeaders,
   HttpParameterCodec,
   HttpParams,
   HttpRequest,
-} from '@angular/common/http';
+} from "@angular/common/http";
 
 /**
  * Custom parameter codec to correctly handle the plus sign in parameter
@@ -59,9 +61,9 @@ abstract class Parameter {
     }
   }
 
-  serializeValue(value: any, separator = ','): string {
+  serializeValue(value: any, separator = ","): string {
     if (value === null || value === undefined) {
-      return '';
+      return "";
     } else if (value instanceof Array) {
       return value
         .map((v) =>
@@ -70,7 +72,7 @@ abstract class Parameter {
             .join(encodeURIComponent(separator))
         )
         .join(separator);
-    } else if (typeof value === 'object') {
+    } else if (typeof value === "object") {
       const array: string[] = [];
       for (const key of Object.keys(value)) {
         let propVal = value[key];
@@ -98,30 +100,30 @@ abstract class Parameter {
  */
 class PathParameter extends Parameter {
   constructor(name: string, value: any, options: ParameterOptions) {
-    super(name, value, options, 'simple', false);
+    super(name, value, options, "simple", false);
   }
 
   append(path: string): string {
     let value = this.value;
     if (value === null || value === undefined) {
-      value = '';
+      value = "";
     }
-    let prefix = this.options.style === 'label' ? '.' : '';
-    let separator = this.options.explode ? (prefix === '' ? ',' : prefix) : ',';
-    if (this.options.style === 'matrix') {
+    let prefix = this.options.style === "label" ? "." : "";
+    let separator = this.options.explode ? (prefix === "" ? "," : prefix) : ",";
+    if (this.options.style === "matrix") {
       // The parameter name is just used as prefix, except in some cases...
       prefix = `;${this.name}=`;
-      if (this.options.explode && typeof value === 'object') {
-        prefix = ';';
+      if (this.options.explode && typeof value === "object") {
+        prefix = ";";
         if (value instanceof Array) {
           // For arrays we have to repeat the name for each element
           value = value.map(
-            (v) => `${this.name}=${this.serializeValue(v, ';')}`
+            (v) => `${this.name}=${this.serializeValue(v, ";")}`
           );
-          separator = ';';
+          separator = ";";
         } else {
           // For objects we have to put each the key / value pairs
-          value = this.serializeValue(value, ';');
+          value = this.serializeValue(value, ";");
         }
       }
     }
@@ -129,7 +131,7 @@ class PathParameter extends Parameter {
     // Replace both the plain variable and the corresponding variant taking in the prefix and explode into account
     path = path.replace(`{${this.name}}`, value);
     path = path.replace(
-      `{${prefix}${this.name}${this.options.explode ? '*' : ''}}`,
+      `{${prefix}${this.name}${this.options.explode ? "*" : ""}}`,
       value
     );
     return path;
@@ -141,7 +143,7 @@ class PathParameter extends Parameter {
  */
 class QueryParameter extends Parameter {
   constructor(name: string, value: any, options: ParameterOptions) {
-    super(name, value, options, 'form', true);
+    super(name, value, options, "form", true);
   }
 
   append(params: HttpParams): HttpParams {
@@ -153,19 +155,19 @@ class QueryParameter extends Parameter {
         }
       } else {
         const separator =
-          this.options.style === 'spaceDelimited'
-            ? ' '
-            : this.options.style === 'pipeDelimited'
-            ? '|'
-            : ',';
+          this.options.style === "spaceDelimited"
+            ? " "
+            : this.options.style === "pipeDelimited"
+            ? "|"
+            : ",";
         return params.append(
           this.name,
           this.serializeValue(this.value, separator)
         );
       }
-    } else if (this.value !== null && typeof this.value === 'object') {
+    } else if (this.value !== null && typeof this.value === "object") {
       // Object serialization
-      if (this.options.style === 'deepObject') {
+      if (this.options.style === "deepObject") {
         // Append a parameter for each key, in the form `name[key]`
         for (const key of Object.keys(this.value)) {
           const propVal = this.value[key];
@@ -209,7 +211,7 @@ class QueryParameter extends Parameter {
  */
 class HeaderParameter extends Parameter {
   constructor(name: string, value: any, options: ParameterOptions) {
-    super(name, value, options, 'simple', false);
+    super(name, value, options, "simple", false);
   }
 
   append(headers: HttpHeaders): HttpHeaders {
@@ -249,7 +251,7 @@ export class RequestBuilder {
     if (value instanceof Blob) {
       return value;
     }
-    if (typeof value === 'object') {
+    if (typeof value === "object") {
       return JSON.stringify(value);
     }
     return String(value);
@@ -279,16 +281,16 @@ export class RequestBuilder {
   /**
    * Sets the body content, along with the content type
    */
-  body(value: any, contentType = 'application/json'): void {
+  body(value: any, contentType = "application/json"): void {
     if (value instanceof Blob) {
       this._bodyContentType = value.type;
     } else {
       this._bodyContentType = contentType;
     }
     if (
-      this._bodyContentType === 'application/x-www-form-urlencoded' &&
+      this._bodyContentType === "application/x-www-form-urlencoded" &&
       value !== null &&
-      typeof value === 'object'
+      typeof value === "object"
     ) {
       // Handle URL-encoded data
       const pairs: string[][] = [];
@@ -306,8 +308,8 @@ export class RequestBuilder {
       }
       this._bodyContent = pairs
         .map((p) => `${encodeURIComponent(p[0])}=${encodeURIComponent(p[1])}`)
-        .join('&');
-    } else if (this._bodyContentType === 'multipart/form-data') {
+        .join("&");
+    } else if (this._bodyContentType === "multipart/form-data") {
       // Handle multipart form data
       const formData = new FormData();
       if (value !== null && value !== undefined) {
@@ -343,7 +345,7 @@ export class RequestBuilder {
     accept?: string;
 
     /** The expected response type */
-    responseType?: 'json' | 'text' | 'blob' | 'arraybuffer';
+    responseType?: "json" | "text" | "blob" | "arraybuffer";
 
     /** Whether to report progress on uploads / downloads */
     reportProgress?: boolean;
@@ -368,7 +370,7 @@ export class RequestBuilder {
     // Header parameters
     let httpHeaders = new HttpHeaders();
     if (options.accept) {
-      httpHeaders = httpHeaders.append('Accept', options.accept);
+      httpHeaders = httpHeaders.append("Accept", options.accept);
     }
     for (const headerParam of this._header.values()) {
       httpHeaders = headerParam.append(httpHeaders);
@@ -376,7 +378,7 @@ export class RequestBuilder {
 
     // Request content headers
     if (this._bodyContentType && !(this._bodyContent instanceof FormData)) {
-      httpHeaders = httpHeaders.set('Content-Type', this._bodyContentType);
+      httpHeaders = httpHeaders.set("Content-Type", this._bodyContentType);
     }
 
     // Perform the request

@@ -1,9 +1,11 @@
 /* tslint:disable */
 /* eslint-disable */
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ApiConfiguration } from './api-configuration';
-import { environment } from '../../environments/environment';
+// noinspection JSUnusedGlobalSymbols
+
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { ApiConfiguration } from "./api-configuration";
+import { environment } from "../../environments/environment";
 
 /**
  * Base class for services

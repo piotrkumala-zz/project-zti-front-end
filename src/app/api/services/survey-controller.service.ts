@@ -1,32 +1,32 @@
 /* tslint:disable */
 /* eslint-disable */
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { BaseService } from '../base-service';
-import { ApiConfiguration } from '../api-configuration';
-import { StrictHttpResponse } from '../strict-http-response';
-import { RequestBuilder } from '../request-builder';
-import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpResponse } from "@angular/common/http";
+import { BaseService } from "../base-service";
+import { ApiConfiguration } from "../api-configuration";
+import { StrictHttpResponse } from "../strict-http-response";
+import { RequestBuilder } from "../request-builder";
+import { Observable } from "rxjs";
+import { filter, map } from "rxjs/operators";
 
-import { ClientSurvey } from '../models/client-survey';
+import { ClientSurvey } from "../models/client-survey";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class SurveyControllerService extends BaseService {
   /**
    * Path part for operation getSurveys
    */
-  static readonly GetSurveysPath = '/api/survey';
+  static readonly GetSurveysPath = "/api/survey";
   /**
    * Path part for operation saveSurvey
    */
-  static readonly SaveSurveyPath = '/api/survey';
+  static readonly SaveSurveyPath = "/api/survey";
   /**
    * Path part for operation getSurvey
    */
-  static readonly GetSurveyPath = '/api/survey/{id}';
+  static readonly GetSurveyPath = "/api/survey/{id}";
 
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
@@ -44,7 +44,7 @@ export class SurveyControllerService extends BaseService {
     const rb = new RequestBuilder(
       this.rootUrl,
       SurveyControllerService.GetSurveysPath,
-      'get'
+      "get"
     );
     if (params) {
     }
@@ -52,8 +52,8 @@ export class SurveyControllerService extends BaseService {
     return this.http
       .request(
         rb.build({
-          responseType: 'json',
-          accept: '*/*',
+          responseType: "json",
+          accept: "*/*",
         })
       )
       .pipe(
@@ -88,17 +88,17 @@ export class SurveyControllerService extends BaseService {
     const rb = new RequestBuilder(
       this.rootUrl,
       SurveyControllerService.SaveSurveyPath,
-      'post'
+      "post"
     );
     if (params) {
-      rb.body(params.body, 'application/json');
+      rb.body(params.body, "application/json");
     }
 
     return this.http
       .request(
         rb.build({
-          responseType: 'json',
-          accept: '*/*',
+          responseType: "json",
+          accept: "*/*",
         })
       )
       .pipe(
@@ -133,17 +133,17 @@ export class SurveyControllerService extends BaseService {
     const rb = new RequestBuilder(
       this.rootUrl,
       SurveyControllerService.GetSurveyPath,
-      'get'
+      "get"
     );
     if (params) {
-      rb.path('id', params.id, {});
+      rb.path("id", params.id, {});
     }
 
     return this.http
       .request(
         rb.build({
-          responseType: 'json',
-          accept: '*/*',
+          responseType: "json",
+          accept: "*/*",
         })
       )
       .pipe(

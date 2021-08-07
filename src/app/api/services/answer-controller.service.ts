@@ -1,28 +1,30 @@
 /* tslint:disable */
 /* eslint-disable */
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { BaseService } from '../base-service';
-import { ApiConfiguration } from '../api-configuration';
-import { StrictHttpResponse } from '../strict-http-response';
-import { RequestBuilder } from '../request-builder';
-import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+// noinspection JSUnusedGlobalSymbols
 
-import { ClientAnswer } from '../models/client-answer';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpResponse } from "@angular/common/http";
+import { BaseService } from "../base-service";
+import { ApiConfiguration } from "../api-configuration";
+import { StrictHttpResponse } from "../strict-http-response";
+import { RequestBuilder } from "../request-builder";
+import { Observable } from "rxjs";
+import { filter, map } from "rxjs/operators";
+
+import { ClientAnswer } from "../models/client-answer";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AnswerControllerService extends BaseService {
   /**
    * Path part for operation saveAnswer
    */
-  static readonly SaveAnswerPath = '/api/answer';
+  static readonly SaveAnswerPath = "/api/answer";
   /**
    * Path part for operation getSurveyAnswers
    */
-  static readonly GetSurveyAnswersPath = '/api/answers/{id}';
+  static readonly GetSurveyAnswersPath = "/api/answers/{id}";
 
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
@@ -40,17 +42,17 @@ export class AnswerControllerService extends BaseService {
     const rb = new RequestBuilder(
       this.rootUrl,
       AnswerControllerService.SaveAnswerPath,
-      'post'
+      "post"
     );
     if (params) {
-      rb.body(params.body, 'application/json');
+      rb.body(params.body, "application/json");
     }
 
     return this.http
       .request(
         rb.build({
-          responseType: 'blob',
-          accept: '*/*',
+          responseType: "blob",
+          accept: "*/*",
         })
       )
       .pipe(
@@ -85,17 +87,17 @@ export class AnswerControllerService extends BaseService {
     const rb = new RequestBuilder(
       this.rootUrl,
       AnswerControllerService.GetSurveyAnswersPath,
-      'get'
+      "get"
     );
     if (params) {
-      rb.path('id', params.id, {});
+      rb.path("id", params.id, {});
     }
 
     return this.http
       .request(
         rb.build({
-          responseType: 'blob',
-          accept: '*/*',
+          responseType: "blob",
+          accept: "*/*",
         })
       )
       .pipe(
