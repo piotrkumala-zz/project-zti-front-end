@@ -37,7 +37,9 @@
             args: --check src
 
         - name: Lint
-          run: npm run lint
+          uses: stefanoeb/eslint-action@1.0.2
+          with:
+            files: src/
 
         - name: Build
           run: |
