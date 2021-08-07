@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 export class AnswerSurveyComponent implements OnInit, OnDestroy {
   survey: ClientSurvey = {};
   private subscription!: Subscription;
+
   constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
