@@ -1,8 +1,8 @@
-<h1 i18n="Insert survey id" mat-dialog-title> Insert survey id </h1>
+<h1 i18n="Insert survey id" mat-dialog-title>Insert survey id</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label i18n="Survey Id">Survey Id</mat-label>
-    <input [formControl]="idControl" matInput>
+    <input [formControl]="idControl" matInput />
     <mat-error *ngIf="idControl.hasError('required')" i18n="Field required">
       This field is required
     </mat-error>
@@ -12,5 +12,12 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button [disabled]="idControl.invalid" [mat-dialog-close]="idControl.value" i18n="Ok" mat-button>Ok</button>
+  <button
+    [disabled]="idControl.invalid"
+    [mat-dialog-close]="idControl.value"
+    i18n="Ok"
+    mat-button
+  >
+    Ok
+  </button>
 </div>

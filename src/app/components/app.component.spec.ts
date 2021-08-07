@@ -10,7 +10,7 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
 
 describe('AppComponent', () => {
-  let initialState = { survey: undefined, id: '' };
+  const initialState = { survey: undefined, id: '' };
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [

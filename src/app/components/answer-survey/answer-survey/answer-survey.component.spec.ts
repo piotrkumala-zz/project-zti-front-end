@@ -6,7 +6,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 describe('AnswerSurveyComponent', () => {
   let component: AnswerSurveyComponent;
   let fixture: ComponentFixture<AnswerSurveyComponent>;
-  let initialState = { survey: {}, id: '' };
+  const initialState = { survey: {}, id: '' };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

@@ -9,7 +9,7 @@ import { MatIcon } from '@angular/material/icon';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  let initialState = { survey: {}, id: '' };
+  const initialState = { survey: {}, id: '' };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

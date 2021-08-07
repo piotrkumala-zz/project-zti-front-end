@@ -22,7 +22,7 @@ export class AppComponent implements OnDestroy {
   ) {
     this.subscription = store.select('id').subscribe((id) => {
       this.surveyService
-        .getSurvey({ id: id })
+        .getSurvey({ id })
         .subscribe((data) => this.store.dispatch(setSurvey({ survey: data })));
     });
     this.subscription.add(
