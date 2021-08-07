@@ -35,10 +35,10 @@
           run: npm i
 
         - name: Check format
-          npm run prettier
+          run: npm run prettier
 
         - name: Lint
-          npm run lint
+          run: npm run lint
 
         - name: Build
           run: npm run build
