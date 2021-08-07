@@ -32,7 +32,9 @@
             node-version: ${{ matrix.node-version }}
 
         - name: Check format
-          run: npm run prettier
+          uses: actionsx/prettier@v2
+          with:
+            args: --check src
 
         - name: Lint
           run: npm run lint
