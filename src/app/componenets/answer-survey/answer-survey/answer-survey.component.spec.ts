@@ -1,14 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AnswerSurveyComponent } from './answer-survey.component';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('AnswerSurveyComponent', () => {
   let component: AnswerSurveyComponent;
   let fixture: ComponentFixture<AnswerSurveyComponent>;
+  let initialState = { survey: {}, id: '' };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AnswerSurveyComponent],
+      providers: [provideMockStore({ initialState })],
     }).compileComponents();
   });
 
