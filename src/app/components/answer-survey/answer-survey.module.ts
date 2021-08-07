@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AnswerSurveyComponent } from './answer-survey/answer-survey.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { AnswerSurveyComponent } from "./answer-survey/answer-survey.component";
 
 @NgModule({
   declarations: [AnswerSurveyComponent],

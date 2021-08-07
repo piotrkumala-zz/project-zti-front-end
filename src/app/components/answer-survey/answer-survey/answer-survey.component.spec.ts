@@ -1,12 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AnswerSurveyComponent } from './answer-survey.component';
-import { provideMockStore } from '@ngrx/store/testing';
+import { AnswerSurveyComponent } from "./answer-survey.component";
+import { provideMockStore } from "@ngrx/store/testing";
 
-describe('AnswerSurveyComponent', () => {
+describe("AnswerSurveyComponent", () => {
   let component: AnswerSurveyComponent;
   let fixture: ComponentFixture<AnswerSurveyComponent>;
-  const initialState = { survey: {}, id: '' };
+  const initialState = { survey: {}, id: "" };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -21,7 +21,7 @@ describe('AnswerSurveyComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

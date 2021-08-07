@@ -1,6 +1,6 @@
-import { Action, createReducer, on } from '@ngrx/store';
-import { resetSurvey, setSurvey } from './survey.actions';
-import { ClientSurvey } from '../../api/models/client-survey';
+import { Action, createReducer, on } from "@ngrx/store";
+import { resetSurvey, setSurvey } from "./survey.actions";
+import { ClientSurvey } from "../../api/models/client-survey";
 
 export const initialState: ClientSurvey = {};
 

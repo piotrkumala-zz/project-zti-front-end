@@ -1,18 +1,18 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SurveySearchDialogComponent } from './survey-search-dialog.component';
+import { SurveySearchDialogComponent } from "./survey-search-dialog.component";
 import {
   MatError,
   MatFormFieldModule,
   MatLabel,
-} from '@angular/material/form-field';
-import { MatDialog, MatDialogClose } from '@angular/material/dialog';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { BrowserTestingModule } from '@angular/platform-browser/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+} from "@angular/material/form-field";
+import { MatDialog, MatDialogClose } from "@angular/material/dialog";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { BrowserTestingModule } from "@angular/platform-browser/testing";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-describe('SurveySearchDialogComponent', () => {
+describe("SurveySearchDialogComponent", () => {
   let component: SurveySearchDialogComponent;
   let fixture: ComponentFixture<SurveySearchDialogComponent>;
 
@@ -41,7 +41,7 @@ describe('SurveySearchDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

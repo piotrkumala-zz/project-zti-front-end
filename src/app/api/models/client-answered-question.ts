@@ -2,6 +2,6 @@
 
 /* eslint-disable */
 export interface ClientAnsweredQuestion {
-  answeredDirection?: 'Left' | 'Right';
+  answeredDirection?: "Left" | "Right";
   questionId?: string;
 }

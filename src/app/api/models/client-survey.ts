@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-import { ClientQuestion } from './client-question';
+import { ClientQuestion } from "./client-question";
 
 export interface ClientSurvey {
   description?: string;

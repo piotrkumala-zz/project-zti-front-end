@@ -1,15 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { HeaderComponent } from './header.component';
-import { MatDialog } from '@angular/material/dialog';
-import { provideMockStore } from '@ngrx/store/testing';
-import { MatToolbar } from '@angular/material/toolbar';
-import { MatIcon } from '@angular/material/icon';
+import { HeaderComponent } from "./header.component";
+import { MatDialog } from "@angular/material/dialog";
+import { provideMockStore } from "@ngrx/store/testing";
+import { MatToolbar } from "@angular/material/toolbar";
+import { MatIcon } from "@angular/material/icon";
 
-describe('HeaderComponent', () => {
+describe("HeaderComponent", () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  const initialState = { survey: {}, id: '' };
+  const initialState = { survey: {}, id: "" };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -27,7 +27,7 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
