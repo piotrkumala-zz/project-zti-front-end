@@ -9,6 +9,7 @@ import { HeaderModule } from './header/header.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AnswerSurveyModule } from './answer-survey/answer-survey.module';
 
 const routes: Routes = [];
 
@@ -21,6 +22,7 @@ const routes: Routes = [];
     RouterModule.forRoot(routes),
     StoreModule.forRoot({ survey: surveyReducer, id: idReducer }),
     HeaderModule,
+    AnswerSurveyModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pl' }],
   bootstrap: [AppComponent],
