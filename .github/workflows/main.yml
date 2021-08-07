@@ -1,4 +1,4 @@
-  name: Build and test Angular app
+  name: build/test
 
   on:
     push:
