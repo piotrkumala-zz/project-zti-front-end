@@ -31,21 +31,17 @@
           with:
             node-version: ${{ matrix.node-version }}
 
+        - name: Install
+          run: npm i
+
         - name: Check format
-          uses: actionsx/prettier@v2
-          with:
-            args: --check src
+          npm run prettier
 
         - name: Lint
-          uses: stefanoeb/eslint-action@1.0.2
-          with:
-            files: src/
+          npm run lint
 
         - name: Build
-          run: |
-            npm i
-            npm run build
+          run: npm run build
 
         - name: Test
-          run: |
-            npm run test:prod
+          run: npm run test:prod
