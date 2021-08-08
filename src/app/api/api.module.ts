@@ -1,18 +1,16 @@
 /* tslint:disable */
 /* eslint-disable */
-// noinspection JSUnusedGlobalSymbols
-
 import {
   ModuleWithProviders,
   NgModule,
   Optional,
-  SkipSelf,
-} from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { ApiConfiguration, ApiConfigurationParams } from "./api-configuration";
+  SkipSelf
+} from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { ApiConfiguration, ApiConfigurationParams } from './api-configuration'
 
-import { SurveyControllerService } from "./services/survey-controller.service";
-import { AnswerControllerService } from "./services/answer-controller.service";
+import { SurveyControllerService } from './services/survey-controller.service'
+import { AnswerControllerService } from './services/answer-controller.service'
 
 /**
  * Module that provides all services and configuration.
@@ -24,8 +22,8 @@ import { AnswerControllerService } from "./services/answer-controller.service";
   providers: [
     SurveyControllerService,
     AnswerControllerService,
-    ApiConfiguration,
-  ],
+    ApiConfiguration
+  ]
 })
 export class ApiModule {
   constructor(
@@ -34,14 +32,14 @@ export class ApiModule {
   ) {
     if (parentModule) {
       throw new Error(
-        "ApiModule is already loaded. Import in your base AppModule only."
-      );
+        'ApiModule is already loaded. Import in your base AppModule only.'
+      )
     }
     if (!http) {
       throw new Error(
-        "You need to import the HttpClientModule in your AppModule! \n" +
-          "See also https://github.com/angular/angular/issues/20575"
-      );
+        'You need to import the HttpClientModule in your AppModule! \n' +
+          'See also https://github.com/angular/angular/issues/20575'
+      )
     }
   }
 
@@ -53,9 +51,9 @@ export class ApiModule {
       providers: [
         {
           provide: ApiConfiguration,
-          useValue: params,
-        },
-      ],
-    };
+          useValue: params
+        }
+      ]
+    }
   }
 }

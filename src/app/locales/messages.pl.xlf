@@ -2,20 +2,22 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="9104695746588509352" datatype="html">
-        <source>Survey Title</source>
-        <target>Nazwa ankiety</target>
+      <trans-unit id="7114960290558997770" datatype="html">
+        <source>Save answers</source>
+        <target>Zapisz odpowiedzi</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="sourcefile">
+            src/app/components/answer-survey/answer-survey/answer-survey.component.html
+          </context>
+          <context context-type="linenumber">38,40</context>
         </context-group>
-        <note priority="1" from="description">surveyTitle</note>
+        <note priority="1" from="description">Save answers</note>
       </trans-unit>
       <trans-unit id="936665471524982924" datatype="html">
         <source>ZTI - Survey system</source>
         <target>ZTI - system ankietowy</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/componenets/header/header.component.html</context>
+          <context context-type="sourcefile">src/app/components/header/header.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
         <note priority="1" from="description">appName</note>
@@ -24,17 +26,17 @@
         <source>Search for survey</source>
         <target>Wyszukaj ankietę</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/componenets/header/header.component.html</context>
+          <context context-type="sourcefile">src/app/components/header/header.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
         <note priority="1" from="description">searchForSurvey</note>
       </trans-unit>
-      <trans-unit id="869350137638622132" datatype="html">
+      <trans-unit id="501677598084231891" datatype="html">
         <source>Insert survey id</source>
         <target>Wpisz id ankiety</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/componenets/header/survey-search-dialog/survey-search-dialog.component.html
+            src/app/components/header/survey-search-dialog/survey-search-dialog.component.html
           </context>
           <context context-type="linenumber">1</context>
         </context-group>
@@ -45,7 +47,7 @@
         <target>Id ankiety</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/componenets/header/survey-search-dialog/survey-search-dialog.component.html
+            src/app/components/header/survey-search-dialog/survey-search-dialog.component.html
           </context>
           <context context-type="linenumber">4</context>
         </context-group>
@@ -56,7 +58,7 @@
         <target>Pole wymagane</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/componenets/header/survey-search-dialog/survey-search-dialog.component.html
+            src/app/components/header/survey-search-dialog/survey-search-dialog.component.html
           </context>
           <context context-type="linenumber">7,8</context>
         </context-group>
@@ -67,20 +69,20 @@
         <target>Podaj poprawny format UUID</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/componenets/header/survey-search-dialog/survey-search-dialog.component.html
+            src/app/components/header/survey-search-dialog/survey-search-dialog.component.html
           </context>
           <context context-type="linenumber">10,11</context>
         </context-group>
         <note priority="1" from="description">Bad UUID format</note>
       </trans-unit>
-      <trans-unit id="8720977247725652816" datatype="html">
+      <trans-unit id="3394880135309962358" datatype="html">
         <source>Ok</source>
         <target>Ok</target>
         <context-group purpose="location">
           <context context-type="sourcefile">
-            src/app/componenets/header/survey-search-dialog/survey-search-dialog.component.html
+            src/app/components/header/survey-search-dialog/survey-search-dialog.component.html
           </context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">21,22</context>
         </context-group>
         <note priority="1" from="description">Ok</note>
       </trans-unit>

@@ -1,4 +1,45 @@
-<div>
-  <span i18n="surveyTitle">Survey Title</span>
-  {{ survey.title }}
+<div class="wrapper">
+  <div class="header">
+    <h1 class="title">
+      {{ survey.title }}
+    </h1>
+
+    <h3 class="sub-title">
+      {{ survey.description }}
+    </h3>
+  </div>
+
+  <div class="content">
+    <mat-vertical-stepper>
+      <mat-step *ngFor="let question of questionsToAnswer">
+        <ng-template matStepLabel
+          ><span>{{ question.text }}</span></ng-template
+        >
+        <mat-radio-group
+          (change)="answerQuestion($event, question)"
+          [(ngModel)]="question.answeredId"
+          class="options"
+          aria-label="Answer the question"
+        >
+          <mat-radio-button [value]="question.left" class="button">
+            {{ question.leftText }}
+          </mat-radio-button>
+          <mat-radio-button [value]="question.right">
+            {{ question.rightText }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </mat-step>
+    </mat-vertical-stepper>
+    <div *ngIf="survey.title" class="footer">
+      <button
+        (click)="saveSurvey()"
+        [disabled]="!isFilledOut"
+        color="primary"
+        i18n="Save answers"
+        mat-raised-button
+      >
+        Save answers
+      </button>
+    </div>
+  </div>
 </div>

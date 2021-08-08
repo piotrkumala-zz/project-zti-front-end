@@ -12,6 +12,11 @@
     "prettier": "prettier -c src",
     "lint": "eslint . --ext .js,.ts "
   },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "none"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.2.0",

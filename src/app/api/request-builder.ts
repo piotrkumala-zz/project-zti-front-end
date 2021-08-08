@@ -1,13 +1,11 @@
 /* tslint:disable */
 /* eslint-disable */
-// noinspection JSUnusedGlobalSymbols,TypeScriptAbstractClassConstructorCanBeMadeProtected
-
 import {
   HttpHeaders,
   HttpParameterCodec,
   HttpParams,
-  HttpRequest,
-} from "@angular/common/http";
+  HttpRequest
+} from '@angular/common/http'
 
 /**
  * Custom parameter codec to correctly handle the plus sign in parameter
@@ -15,55 +13,55 @@ import {
  */
 class ParameterCodec implements HttpParameterCodec {
   encodeKey(key: string): string {
-    return encodeURIComponent(key);
+    return encodeURIComponent(key)
   }
 
   encodeValue(value: string): string {
-    return encodeURIComponent(value);
+    return encodeURIComponent(value)
   }
 
   decodeKey(key: string): string {
-    return decodeURIComponent(key);
+    return decodeURIComponent(key)
   }
 
   decodeValue(value: string): string {
-    return decodeURIComponent(value);
+    return decodeURIComponent(value)
   }
 }
 
-const ParameterCodecInstance = new ParameterCodec();
+const ParameterCodecInstance = new ParameterCodec()
 
 /**
  * Defines the options for appending a parameter
  */
 interface ParameterOptions {
-  style?: string;
-  explode?: boolean;
+  style?: string
+  explode?: boolean
 }
 
 /**
  * Base class for a parameter
  */
 abstract class Parameter {
-  constructor(
+  protected constructor(
     public name: string,
     public value: any,
     public options: ParameterOptions,
     defaultStyle: string,
     defaultExplode: boolean
   ) {
-    this.options = options || {};
+    this.options = options || {}
     if (this.options.style === null || this.options.style === undefined) {
-      this.options.style = defaultStyle;
+      this.options.style = defaultStyle
     }
     if (this.options.explode === null || this.options.explode === undefined) {
-      this.options.explode = defaultExplode;
+      this.options.explode = defaultExplode
     }
   }
 
-  serializeValue(value: any, separator = ","): string {
+  serializeValue(value: any, separator = ','): string {
     if (value === null || value === undefined) {
-      return "";
+      return ''
     } else if (value instanceof Array) {
       return value
         .map((v) =>
@@ -71,26 +69,26 @@ abstract class Parameter {
             .split(separator)
             .join(encodeURIComponent(separator))
         )
-        .join(separator);
-    } else if (typeof value === "object") {
-      const array: string[] = [];
+        .join(separator)
+    } else if (typeof value === 'object') {
+      const array: string[] = []
       for (const key of Object.keys(value)) {
-        let propVal = value[key];
+        let propVal = value[key]
         if (propVal !== null && propVal !== undefined) {
           propVal = this.serializeValue(propVal)
             .split(separator)
-            .join(encodeURIComponent(separator));
+            .join(encodeURIComponent(separator))
           if (this.options.explode) {
-            array.push(`${key}=${propVal}`);
+            array.push(`${key}=${propVal}`)
           } else {
-            array.push(key);
-            array.push(propVal);
+            array.push(key)
+            array.push(propVal)
           }
         }
       }
-      return array.join(separator);
+      return array.join(separator)
     } else {
-      return String(value);
+      return String(value)
     }
   }
 }
@@ -100,41 +98,41 @@ abstract class Parameter {
  */
 class PathParameter extends Parameter {
   constructor(name: string, value: any, options: ParameterOptions) {
-    super(name, value, options, "simple", false);
+    super(name, value, options, 'simple', false)
   }
 
   append(path: string): string {
-    let value = this.value;
+    let value = this.value
     if (value === null || value === undefined) {
-      value = "";
+      value = ''
     }
-    let prefix = this.options.style === "label" ? "." : "";
-    let separator = this.options.explode ? (prefix === "" ? "," : prefix) : ",";
-    if (this.options.style === "matrix") {
+    let prefix = this.options.style === 'label' ? '.' : ''
+    let separator = this.options.explode ? (prefix === '' ? ',' : prefix) : ','
+    if (this.options.style === 'matrix') {
       // The parameter name is just used as prefix, except in some cases...
-      prefix = `;${this.name}=`;
-      if (this.options.explode && typeof value === "object") {
-        prefix = ";";
+      prefix = `;${this.name}=`
+      if (this.options.explode && typeof value === 'object') {
+        prefix = ';'
         if (value instanceof Array) {
           // For arrays we have to repeat the name for each element
           value = value.map(
-            (v) => `${this.name}=${this.serializeValue(v, ";")}`
-          );
-          separator = ";";
+            (v) => `${this.name}=${this.serializeValue(v, ';')}`
+          )
+          separator = ';'
         } else {
           // For objects we have to put each the key / value pairs
-          value = this.serializeValue(value, ";");
+          value = this.serializeValue(value, ';')
         }
       }
     }
-    value = prefix + this.serializeValue(value, separator);
+    value = prefix + this.serializeValue(value, separator)
     // Replace both the plain variable and the corresponding variant taking in the prefix and explode into account
-    path = path.replace(`{${this.name}}`, value);
+    path = path.replace(`{${this.name}}`, value)
     path = path.replace(
-      `{${prefix}${this.name}${this.options.explode ? "*" : ""}}`,
+      `{${prefix}${this.name}${this.options.explode ? '*' : ''}}`,
       value
-    );
-    return path;
+    )
+    return path
   }
 }
 
@@ -143,7 +141,7 @@ class PathParameter extends Parameter {
  */
 class QueryParameter extends Parameter {
   constructor(name: string, value: any, options: ParameterOptions) {
-    super(name, value, options, "form", true);
+    super(name, value, options, 'form', true)
   }
 
   append(params: HttpParams): HttpParams {
@@ -151,58 +149,58 @@ class QueryParameter extends Parameter {
       // Array serialization
       if (this.options.explode) {
         for (const v of this.value) {
-          params = params.append(this.name, this.serializeValue(v));
+          params = params.append(this.name, this.serializeValue(v))
         }
       } else {
         const separator =
-          this.options.style === "spaceDelimited"
-            ? " "
-            : this.options.style === "pipeDelimited"
-            ? "|"
-            : ",";
+          this.options.style === 'spaceDelimited'
+            ? ' '
+            : this.options.style === 'pipeDelimited'
+            ? '|'
+            : ','
         return params.append(
           this.name,
           this.serializeValue(this.value, separator)
-        );
+        )
       }
-    } else if (this.value !== null && typeof this.value === "object") {
+    } else if (this.value !== null && typeof this.value === 'object') {
       // Object serialization
-      if (this.options.style === "deepObject") {
+      if (this.options.style === 'deepObject') {
         // Append a parameter for each key, in the form `name[key]`
         for (const key of Object.keys(this.value)) {
-          const propVal = this.value[key];
+          const propVal = this.value[key]
           if (propVal !== null && propVal !== undefined) {
             params = params.append(
               `${this.name}[${key}]`,
               this.serializeValue(propVal)
-            );
+            )
           }
         }
       } else if (this.options.explode) {
         // Append a parameter for each key without using the parameter name
         for (const key of Object.keys(this.value)) {
-          const propVal = this.value[key];
+          const propVal = this.value[key]
           if (propVal !== null && propVal !== undefined) {
-            params = params.append(key, this.serializeValue(propVal));
+            params = params.append(key, this.serializeValue(propVal))
           }
         }
       } else {
         // Append a single parameter whose values are a comma-separated list of key,value,key,value...
-        const array: any[] = [];
+        const array: any[] = []
         for (const key of Object.keys(this.value)) {
-          const propVal = this.value[key];
+          const propVal = this.value[key]
           if (propVal !== null && propVal !== undefined) {
-            array.push(key);
-            array.push(propVal);
+            array.push(key)
+            array.push(propVal)
           }
         }
-        params = params.append(this.name, this.serializeValue(array));
+        params = params.append(this.name, this.serializeValue(array))
       }
     } else if (this.value !== null && this.value !== undefined) {
       // Plain value
-      params = params.append(this.name, this.serializeValue(this.value));
+      params = params.append(this.name, this.serializeValue(this.value))
     }
-    return params;
+    return params
   }
 }
 
@@ -211,20 +209,20 @@ class QueryParameter extends Parameter {
  */
 class HeaderParameter extends Parameter {
   constructor(name: string, value: any, options: ParameterOptions) {
-    super(name, value, options, "simple", false);
+    super(name, value, options, 'simple', false)
   }
 
   append(headers: HttpHeaders): HttpHeaders {
     if (this.value !== null && this.value !== undefined) {
       if (this.value instanceof Array) {
         for (const v of this.value) {
-          headers = headers.append(this.name, this.serializeValue(v));
+          headers = headers.append(this.name, this.serializeValue(v))
         }
       } else {
-        headers = headers.append(this.name, this.serializeValue(this.value));
+        headers = headers.append(this.name, this.serializeValue(this.value))
       }
     }
-    return headers;
+    return headers
   }
 }
 
@@ -232,11 +230,11 @@ class HeaderParameter extends Parameter {
  * Helper to build http requests from parameters
  */
 export class RequestBuilder {
-  _bodyContent: any | null;
-  _bodyContentType?: string;
-  private _path = new Map<string, PathParameter>();
-  private _query = new Map<string, QueryParameter>();
-  private _header = new Map<string, HeaderParameter>();
+  _bodyContent: any | null
+  _bodyContentType?: string
+  private _path = new Map<string, PathParameter>()
+  private _query = new Map<string, QueryParameter>()
+  private _header = new Map<string, HeaderParameter>()
 
   constructor(
     public rootUrl: string,
@@ -246,94 +244,94 @@ export class RequestBuilder {
 
   private static formDataValue(value: any): any {
     if (value === null || value === undefined) {
-      return null;
+      return null
     }
     if (value instanceof Blob) {
-      return value;
+      return value
     }
-    if (typeof value === "object") {
-      return JSON.stringify(value);
+    if (typeof value === 'object') {
+      return JSON.stringify(value)
     }
-    return String(value);
+    return String(value)
   }
 
   /**
    * Sets a path parameter
    */
   path(name: string, value: any, options?: ParameterOptions): void {
-    this._path.set(name, new PathParameter(name, value, options || {}));
+    this._path.set(name, new PathParameter(name, value, options || {}))
   }
 
   /**
    * Sets a query parameter
    */
   query(name: string, value: any, options?: ParameterOptions): void {
-    this._query.set(name, new QueryParameter(name, value, options || {}));
+    this._query.set(name, new QueryParameter(name, value, options || {}))
   }
 
   /**
    * Sets a header parameter
    */
   header(name: string, value: any, options?: ParameterOptions): void {
-    this._header.set(name, new HeaderParameter(name, value, options || {}));
+    this._header.set(name, new HeaderParameter(name, value, options || {}))
   }
 
   /**
    * Sets the body content, along with the content type
    */
-  body(value: any, contentType = "application/json"): void {
+  body(value: any, contentType = 'application/json'): void {
     if (value instanceof Blob) {
-      this._bodyContentType = value.type;
+      this._bodyContentType = value.type
     } else {
-      this._bodyContentType = contentType;
+      this._bodyContentType = contentType
     }
     if (
-      this._bodyContentType === "application/x-www-form-urlencoded" &&
+      this._bodyContentType === 'application/x-www-form-urlencoded' &&
       value !== null &&
-      typeof value === "object"
+      typeof value === 'object'
     ) {
       // Handle URL-encoded data
-      const pairs: string[][] = [];
+      const pairs: string[][] = []
       for (const key of Object.keys(value)) {
-        let val = value[key];
+        let val = value[key]
         if (!(val instanceof Array)) {
-          val = [val];
+          val = [val]
         }
         for (const v of val) {
-          const formValue = RequestBuilder.formDataValue(v);
+          const formValue = RequestBuilder.formDataValue(v)
           if (formValue !== null) {
-            pairs.push([key, formValue]);
+            pairs.push([key, formValue])
           }
         }
       }
       this._bodyContent = pairs
         .map((p) => `${encodeURIComponent(p[0])}=${encodeURIComponent(p[1])}`)
-        .join("&");
-    } else if (this._bodyContentType === "multipart/form-data") {
+        .join('&')
+    } else if (this._bodyContentType === 'multipart/form-data') {
       // Handle multipart form data
-      const formData = new FormData();
+      const formData = new FormData()
       if (value !== null && value !== undefined) {
         for (const key of Object.keys(value)) {
-          const val = value[key];
+          const val = value[key]
           if (val instanceof Array) {
             for (const v of val) {
-              const toAppend = RequestBuilder.formDataValue(v);
+              const toAppend = RequestBuilder.formDataValue(v)
               if (toAppend !== null) {
-                formData.append(key, toAppend);
+                formData.append(key, toAppend)
               }
             }
           } else {
-            const toAppend = RequestBuilder.formDataValue(val);
+            const toAppend = RequestBuilder.formDataValue(val)
             if (toAppend !== null) {
-              formData.set(key, toAppend);
+              formData.set(key, toAppend)
             }
           }
         }
       }
-      this._bodyContent = formData;
+      this._bodyContent = formData
     } else {
       // The body is the plain content
-      this._bodyContent = value;
+      this._bodyContent = value
     }
   }
 
@@ -342,43 +340,43 @@ export class RequestBuilder {
    */
   build<T = any>(options?: {
     /** Which content types to accept */
-    accept?: string;
+    accept?: string
 
     /** The expected response type */
-    responseType?: "json" | "text" | "blob" | "arraybuffer";
+    responseType?: 'json' | 'text' | 'blob' | 'arraybuffer'
 
     /** Whether to report progress on uploads / downloads */
-    reportProgress?: boolean;
+    reportProgress?: boolean
   }): HttpRequest<T> {
-    options = options || {};
+    options = options || {}
 
     // Path parameters
-    let path = this.operationPath;
+    let path = this.operationPath
     for (const pathParam of this._path.values()) {
-      path = pathParam.append(path);
+      path = pathParam.append(path)
     }
-    const url = this.rootUrl + path;
+    const url = this.rootUrl + path
 
     // Query parameters
     let httpParams = new HttpParams({
-      encoder: ParameterCodecInstance,
-    });
+      encoder: ParameterCodecInstance
+    })
     for (const queryParam of this._query.values()) {
-      httpParams = queryParam.append(httpParams);
+      httpParams = queryParam.append(httpParams)
     }
 
     // Header parameters
-    let httpHeaders = new HttpHeaders();
+    let httpHeaders = new HttpHeaders()
     if (options.accept) {
-      httpHeaders = httpHeaders.append("Accept", options.accept);
+      httpHeaders = httpHeaders.append('Accept', options.accept)
     }
     for (const headerParam of this._header.values()) {
-      httpHeaders = headerParam.append(httpHeaders);
+      httpHeaders = headerParam.append(httpHeaders)
     }
 
     // Request content headers
     if (this._bodyContentType && !(this._bodyContent instanceof FormData)) {
-      httpHeaders = httpHeaders.set("Content-Type", this._bodyContentType);
+      httpHeaders = httpHeaders.set('Content-Type', this._bodyContentType)
     }
 
     // Perform the request
@@ -390,8 +388,8 @@ export class RequestBuilder {
         params: httpParams,
         headers: httpHeaders,
         responseType: options.responseType,
-        reportProgress: options.reportProgress,
+        reportProgress: options.reportProgress
       }
-    );
+    )
   }
 }
