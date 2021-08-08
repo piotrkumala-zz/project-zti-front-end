@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog'
 import { AnswerSurveyComponent } from './answer-survey/answer-survey/answer-survey.component'
 import { MatToolbar } from '@angular/material/toolbar'
 import { MatIcon } from '@angular/material/icon'
+import { MatStepper } from '@angular/material/stepper'
 
 describe('AppComponent', () => {
   const initialState = { survey: undefined, id: '' }
@@ -18,7 +19,8 @@ describe('AppComponent', () => {
         HeaderComponent,
         AnswerSurveyComponent,
         MatToolbar,
-        MatIcon
+        MatIcon,
+        MatStepper
       ],
       providers: [
         provideMockStore({ initialState }),

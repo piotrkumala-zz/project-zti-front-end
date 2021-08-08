@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { AnswerSurveyComponent } from './answer-survey.component'
 import { provideMockStore } from '@ngrx/store/testing'
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { MatStepper } from '@angular/material/stepper'
 
 describe('AnswerSurveyComponent', () => {
   let component: AnswerSurveyComponent
@@ -10,8 +12,9 @@ describe('AnswerSurveyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AnswerSurveyComponent],
-      providers: [provideMockStore({ initialState })]
+      declarations: [AnswerSurveyComponent, MatStepper],
+      providers: [provideMockStore({ initialState })],
+      imports: [HttpClientTestingModule]
     }).compileComponents()
   })
 
