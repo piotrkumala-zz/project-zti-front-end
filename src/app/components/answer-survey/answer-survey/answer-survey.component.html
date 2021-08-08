@@ -9,5 +9,23 @@
     </h3>
   </div>
 
-  <div class="content"></div>
+  <div class="content">
+    <mat-vertical-stepper>
+      <mat-step *ngFor="let question of questionsToAnswer">
+        {{ question.text }} <br />
+        <mat-radio-group
+          aria-label="Answer the question"
+          [(ngModel)]="question.answeredId"
+          (change)="answerQuestion($event, question)"
+        >
+          <mat-radio-button [value]="question.left">
+            {{ question.leftText }}
+          </mat-radio-button>
+          <mat-radio-button [value]="question.right">
+            {{ question.rightText }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
 </div>
