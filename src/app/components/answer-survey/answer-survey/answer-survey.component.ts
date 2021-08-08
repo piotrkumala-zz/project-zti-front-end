@@ -17,6 +17,7 @@ import { AnswerControllerService } from '../../../api/services/answer-controller
 export class AnswerSurveyComponent implements OnInit, OnDestroy {
   survey: ClientSurvey = {}
   questionsToAnswer: QuestionWithAnswers[] = []
+  isFilledOut = false
   private answer: ClientAnswer = {}
   private subscription!: Subscription
 
@@ -50,6 +51,7 @@ export class AnswerSurveyComponent implements OnInit, OnDestroy {
 
   answerQuestion(event: MatRadioChange, question: ClientQuestion): void {
     if (this.survey.question) {
+      this.isFilledOut = true
       const index =
         this.questionsToAnswer.findIndex((x) => x.id === question.id) + 1
       if (index && index !== this.questionsToAnswer.length) {
@@ -62,6 +64,7 @@ export class AnswerSurveyComponent implements OnInit, OnDestroy {
         newQuestion.left = newQuestion.left ?? 'left'
         newQuestion.right = newQuestion.right ?? 'right'
         this.questionsToAnswer.push(newQuestion)
+        this.isFilledOut = false
       }
     }
   }

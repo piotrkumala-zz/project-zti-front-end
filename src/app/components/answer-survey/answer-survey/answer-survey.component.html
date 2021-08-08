@@ -29,6 +29,7 @@
     </mat-vertical-stepper>
     <div class="footer" *ngIf="survey.title">
       <button
+        [disabled]="!isFilledOut"
         mat-raised-button
         color="primary"
         i18n="Save answers"
