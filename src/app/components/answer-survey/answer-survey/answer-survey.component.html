@@ -14,9 +14,9 @@
       <mat-step *ngFor="let question of questionsToAnswer">
         {{ question.text }} <br />
         <mat-radio-group
-          aria-label="Answer the question"
-          [(ngModel)]="question.answeredId"
           (change)="answerQuestion($event, question)"
+          [(ngModel)]="question.answeredId"
+          aria-label="Answer the question"
         >
           <mat-radio-button [value]="question.left">
             {{ question.leftText }}
@@ -27,13 +27,13 @@
         </mat-radio-group>
       </mat-step>
     </mat-vertical-stepper>
-    <div class="footer" *ngIf="survey.title">
+    <div *ngIf="survey.title" class="footer">
       <button
+        (click)="saveSurvey()"
         [disabled]="!isFilledOut"
-        mat-raised-button
         color="primary"
         i18n="Save answers"
-        (click)="saveSurvey()"
+        mat-raised-button
       >
         Save answers
       </button>
