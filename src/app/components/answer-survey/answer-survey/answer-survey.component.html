@@ -27,5 +27,15 @@
         </mat-radio-group>
       </mat-step>
     </mat-vertical-stepper>
+    <div class="footer" *ngIf="survey.title">
+      <button
+        mat-raised-button
+        color="primary"
+        i18n="Save answers"
+        (click)="saveSurvey()"
+      >
+        Save answers
+      </button>
+    </div>
   </div>
 </div>

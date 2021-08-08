@@ -7,7 +7,7 @@ import { ClientAnswer } from '../../../api/models/client-answer'
 import { MatRadioChange } from '@angular/material/radio'
 import { ClientQuestion } from '../../../api/models/client-question'
 import { QuestionWithAnswers } from '../../../models/questionWithAnswers'
-import { ClientAnsweredQuestion } from '../../../api/models/client-answered-question'
+import { AnswerControllerService } from '../../../api/services/answer-controller.service'
 
 @Component({
   selector: 'app-answer-survey',
@@ -20,7 +20,10 @@ export class AnswerSurveyComponent implements OnInit, OnDestroy {
   private answer: ClientAnswer = {}
   private subscription!: Subscription
 
-  constructor(private store: Store<State>) {}
+  constructor(
+    private store: Store<State>,
+    private answerService: AnswerControllerService
+  ) {}
 
   ngOnInit(): void {
     this.subscription = this.store.select('survey').subscribe((survey) => {
@@ -46,31 +49,28 @@ export class AnswerSurveyComponent implements OnInit, OnDestroy {
   }
 
   answerQuestion(event: MatRadioChange, question: ClientQuestion): void {
-    const answeredQuestion: ClientAnsweredQuestion = {
-      questionId: question.id,
-      answeredDirection: event.value === question.left ? 'Left' : 'Right'
-    }
-    if (this.answer.answeredQuestions) {
-      this.answer.answeredQuestions = [
-        ...this.answer.answeredQuestions,
-        answeredQuestion
-      ]
-    } else {
-      this.answer.answeredQuestions = [answeredQuestion]
-    }
     if (this.survey.question) {
       const index =
         this.questionsToAnswer.findIndex((x) => x.id === question.id) + 1
       if (index && index !== this.questionsToAnswer.length) {
         this.questionsToAnswer = this.questionsToAnswer.slice(0, index)
       }
-      if (event.value) {
-        this.questionsToAnswer.push(
-          this.survey.question
-            .filter((x) => x.id === event.value)
-            .map((x) => ({ ...x }))[0]
-        )
+      if (event.value && event.value !== 'right' && event.value !== 'left') {
+        const newQuestion: QuestionWithAnswers = {
+          ...this.survey.question.find((x) => x.id === event.value)
+        }
+        newQuestion.left = newQuestion.left ?? 'left'
+        newQuestion.right = newQuestion.right ?? 'right'
+        this.questionsToAnswer.push(newQuestion)
       }
     }
+  }
+
+  async saveSurvey(): Promise<void> {
+    this.answer.answeredQuestions = this.questionsToAnswer.map((x) => ({
+      questionId: x.id,
+      answeredDirection: x.answeredId === x.left ? 'Left' : 'Right'
+    }))
+    await this.answerService.saveAnswer({ body: this.answer }).toPromise()
   }
 }
