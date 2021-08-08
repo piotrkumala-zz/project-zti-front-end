@@ -5,7 +5,6 @@
   align-items: center;
 
   .header {
-    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,6 +20,30 @@
   }
 
   .content {
-    width: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .footer {
+      padding: 20px 0 0 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .content {
+      width: 50%;
+    }
+  }
+
+  .options {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 16px;
+
+    .button {
+      margin-right: 24px;
+    }
   }
 }

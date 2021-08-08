@@ -12,13 +12,16 @@
   <div class="content">
     <mat-vertical-stepper>
       <mat-step *ngFor="let question of questionsToAnswer">
-        {{ question.text }} <br />
+        <ng-template matStepLabel
+          ><span>{{ question.text }}</span></ng-template
+        >
         <mat-radio-group
           (change)="answerQuestion($event, question)"
           [(ngModel)]="question.answeredId"
+          class="options"
           aria-label="Answer the question"
         >
-          <mat-radio-button [value]="question.left">
+          <mat-radio-button [value]="question.left" class="button">
             {{ question.leftText }}
           </mat-radio-button>
           <mat-radio-button [value]="question.right">
