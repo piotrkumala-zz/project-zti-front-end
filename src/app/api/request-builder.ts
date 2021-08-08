@@ -1,7 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-// noinspection JSUnusedGlobalSymbols,TypeScriptAbstractClassConstructorCanBeMadeProtected
-
 import {
   HttpHeaders,
   HttpParameterCodec,
@@ -244,19 +242,6 @@ export class RequestBuilder {
     public method: string
   ) {}
 
-  private static formDataValue(value: any): any {
-    if (value === null || value === undefined) {
-      return null;
-    }
-    if (value instanceof Blob) {
-      return value;
-    }
-    if (typeof value === "object") {
-      return JSON.stringify(value);
-    }
-    return String(value);
-  }
-
   /**
    * Sets a path parameter
    */
@@ -393,5 +378,18 @@ export class RequestBuilder {
         reportProgress: options.reportProgress,
       }
     );
+  }
+
+  private static formDataValue(value: any): any {
+    if (value === null || value === undefined) {
+      return null;
+    }
+    if (value instanceof Blob) {
+      return value;
+    }
+    if (typeof value === "object") {
+      return JSON.stringify(value);
+    }
+    return String(value);
   }
 }

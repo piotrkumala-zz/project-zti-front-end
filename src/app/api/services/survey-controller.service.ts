@@ -70,9 +70,9 @@ export class SurveyControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getSurveys(params?: {}): Observable<ClientSurvey[]> {
+  getSurveys(params?: {}): Observable<{}> {
     return this.getSurveys$Response(params).pipe(
-      map((r: StrictHttpResponse<ClientSurvey[]>) => r.body as ClientSurvey[])
+      map((r: StrictHttpResponse<{}>) => r.body as {})
     );
   }
 
@@ -162,10 +162,7 @@ export class SurveyControllerService extends BaseService {
    */
   getSurvey(params: { id: string }): Observable<ClientSurvey> {
     return this.getSurvey$Response(params).pipe(
-      map((r: StrictHttpResponse<ClientSurvey>) => {
-        console.log(r.body);
-        return r.body as ClientSurvey;
-      })
+      map((r: StrictHttpResponse<ClientSurvey>) => r.body as ClientSurvey)
     );
   }
 }

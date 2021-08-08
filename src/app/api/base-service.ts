@@ -1,7 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-// noinspection JSUnusedGlobalSymbols
-
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ApiConfiguration } from "./api-configuration";

@@ -1,7 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-// noinspection JSUnusedGlobalSymbols
-
 import {
   ModuleWithProviders,
   NgModule,
