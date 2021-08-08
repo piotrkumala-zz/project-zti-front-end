@@ -43,7 +43,7 @@ interface ParameterOptions {
  * Base class for a parameter
  */
 abstract class Parameter {
-  constructor(
+  protected constructor(
     public name: string,
     public value: any,
     public options: ParameterOptions,
