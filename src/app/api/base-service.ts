@@ -1,9 +1,9 @@
 /* tslint:disable */
 /* eslint-disable */
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { ApiConfiguration } from "./api-configuration";
-import { environment } from "../../environments/environment";
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { ApiConfiguration } from './api-configuration'
+import { environment } from '../../environments/environment'
 
 /**
  * Base class for services
@@ -12,20 +12,20 @@ import { environment } from "../../environments/environment";
 export class BaseService {
   constructor(protected config: ApiConfiguration, protected http: HttpClient) {}
 
-  private _rootUrl: string = environment.baseUrl;
+  private _rootUrl: string = environment.baseUrl
 
   /**
    * Returns the root url for all operations in this service. If not set directly in this
    * service, will fallback to `ApiConfiguration.rootUrl`.
    */
   get rootUrl(): string {
-    return this._rootUrl || this.config.rootUrl;
+    return this._rootUrl || this.config.rootUrl
   }
 
   /**
    * Sets the root URL for API operations in this service.
    */
   set rootUrl(rootUrl: string) {
-    this._rootUrl = rootUrl;
+    this._rootUrl = rootUrl
   }
 }
