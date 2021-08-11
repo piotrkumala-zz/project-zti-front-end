@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { AnswerSurveyComponent } from './answer-survey/answer-survey.component'
-import { MatStepperModule } from '@angular/material/stepper'
-import { MatRadioModule } from '@angular/material/radio'
-import { FormsModule } from '@angular/forms'
-import { MatButtonModule } from '@angular/material/button'
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AnswerSurveyComponent } from './answer-survey/answer-survey.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AnswerSurveyComponent],
@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button'
     MatStepperModule,
     MatRadioModule,
     FormsModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+  ],
 })
 export class AnswerSurveyModule {}

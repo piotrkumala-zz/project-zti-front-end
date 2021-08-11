@@ -1,20 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SurveySearchDialogComponent } from './survey-search-dialog.component'
+import { SurveySearchDialogComponent } from './survey-search-dialog.component';
 import {
   MatError,
   MatFormFieldModule,
-  MatLabel
-} from '@angular/material/form-field'
-import { MatDialog, MatDialogClose } from '@angular/material/dialog'
-import { ReactiveFormsModule } from '@angular/forms'
-import { MatInputModule } from '@angular/material/input'
-import { BrowserTestingModule } from '@angular/platform-browser/testing'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+  MatLabel,
+} from '@angular/material/form-field';
+import { MatDialog, MatDialogClose } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserTestingModule } from '@angular/platform-browser/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SurveySearchDialogComponent', () => {
-  let component: SurveySearchDialogComponent
-  let fixture: ComponentFixture<SurveySearchDialogComponent>
+  let component: SurveySearchDialogComponent;
+  let fixture: ComponentFixture<SurveySearchDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -22,7 +22,7 @@ describe('SurveySearchDialogComponent', () => {
         SurveySearchDialogComponent,
         MatLabel,
         MatError,
-        MatDialogClose
+        MatDialogClose,
       ],
       providers: [{ provide: MatDialog, useValue: {} }],
       imports: [
@@ -30,18 +30,18 @@ describe('SurveySearchDialogComponent', () => {
         MatFormFieldModule,
         MatInputModule,
         BrowserTestingModule,
-        BrowserAnimationsModule
-      ]
-    }).compileComponents()
-  })
+        BrowserAnimationsModule,
+      ],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SurveySearchDialogComponent)
-    component = fixture.componentInstance
-    fixture.detectChanges()
-  })
+    fixture = TestBed.createComponent(SurveySearchDialogComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
-    expect(component).toBeTruthy()
-  })
-})
+    expect(component).toBeTruthy();
+  });
+});

@@ -1,3 +1,3 @@
-import { ClientSurvey } from '../api/models/client-survey'
+import { ClientSurvey } from '../api/models/client-survey';
 
-export type State = { survey: ClientSurvey; id: string }
+export type State = { survey: ClientSurvey; id: string };
