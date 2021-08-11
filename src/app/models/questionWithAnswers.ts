@@ -1,3 +1,3 @@
-import { ClientQuestion } from '../api/models/client-question'
+import { ClientQuestion } from '../api/models/client-question';
 
-export type QuestionWithAnswers = ClientQuestion & { answeredId?: string }
+export type QuestionWithAnswers = ClientQuestion & { answeredId?: string };

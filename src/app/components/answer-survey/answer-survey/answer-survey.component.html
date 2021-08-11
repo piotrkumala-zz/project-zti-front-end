@@ -18,8 +18,8 @@
         <mat-radio-group
           (change)="answerQuestion($event, question)"
           [(ngModel)]="question.answeredId"
-          class="options"
           aria-label="Answer the question"
+          class="options"
         >
           <mat-radio-button [value]="question.left" class="button">
             {{ question.leftText }}
