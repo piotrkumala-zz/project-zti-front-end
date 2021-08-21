@@ -4,6 +4,7 @@ import { SurveySearchDialogComponent } from './survey-search-dialog/survey-searc
 import { setId } from '../../store/id/id.actions';
 import { Store } from '@ngrx/store';
 import { State } from '../../store/state';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +12,17 @@ import { State } from '../../store/state';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor(private dialog: MatDialog, private store: Store<State>) {}
+  constructor(
+    private dialog: MatDialog,
+    private store: Store<State>,
+    private router: Router,
+  ) {}
 
   searchSurvey(): void {
     const dialogRef = this.dialog.open(SurveySearchDialogComponent);
-    dialogRef.afterClosed().subscribe((result: string) => {
+    dialogRef.afterClosed().subscribe(async (result: string) => {
       this.store.dispatch(setId({ id: result }));
+      await this.router.navigate(['/answer']);
     });
   }
 }

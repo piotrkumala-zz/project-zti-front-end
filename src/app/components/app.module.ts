@@ -10,8 +10,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AnswerSurveyModule } from './answer-survey/answer-survey.module';
+import { CreateSurveyComponent } from './create-survey/create-survey/create-survey.component';
+import { AnswerSurveyComponent } from './answer-survey/answer-survey/answer-survey.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'answer', component: AnswerSurveyComponent },
+  { path: 'create', component: CreateSurveyComponent },
+  { path: '', redirectTo: '/answer', pathMatch: 'full' },
+];
 
 @NgModule({
   declarations: [AppComponent],
