@@ -8,7 +8,7 @@ import { MatStepper } from '@angular/material/stepper';
 describe('AnswerSurveyComponent', () => {
   let component: AnswerSurveyComponent;
   let fixture: ComponentFixture<AnswerSurveyComponent>;
-  const initialState = { survey: {}, id: '' };
+  const initialState = { survey: {}, id: '', newSurvey: {} };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

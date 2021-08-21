@@ -10,7 +10,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  const initialState = { survey: {}, id: '' };
+  const initialState = { survey: {}, id: '', newSurvey: {} };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

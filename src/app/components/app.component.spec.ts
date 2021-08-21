@@ -11,7 +11,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatStepper } from '@angular/material/stepper';
 
 describe('AppComponent', () => {
-  const initialState = { survey: undefined, id: '' };
+  const initialState = { survey: {}, id: '', newSurvey: {} };
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
