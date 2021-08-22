@@ -11,6 +11,7 @@ import { AnswerSurveyModule } from './answer-survey/answer-survey.module';
 import { CreateSurveyComponent } from './create-survey/create-survey/create-survey.component';
 import { AnswerSurveyComponent } from './answer-survey/answer-survey/answer-survey.component';
 import { reducers } from '../store/state';
+import { CreateSurveyModule } from './create-survey/create-survey.module';
 
 const routes: Routes = [
   { path: 'answer', component: AnswerSurveyComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
     StoreModule.forRoot(reducers),
     HeaderModule,
     AnswerSurveyModule,
+    CreateSurveyModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pl' }],
   bootstrap: [AppComponent],
