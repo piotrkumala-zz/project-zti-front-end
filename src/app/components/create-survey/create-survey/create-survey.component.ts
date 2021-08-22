@@ -6,41 +6,8 @@ import { ClientSurvey } from '../../../api/models/client-survey';
 import { setNewSurvey } from '../../../store/newSurvey/newSurvey.actions';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
-
-interface QuestionNode {
-  text: string;
-  children?: QuestionNode[];
-}
-
-const TREE_DATA: QuestionNode[] = [
-  {
-    text: 'Base Question',
-    children: [{ text: 'Apple' }, { text: 'Banana' }, { text: 'Fruit loops' }],
-  },
-  {
-    text: 'Vegetables',
-    children: [
-      {
-        text: 'Green',
-        children: [
-          { text: 'Broccoli' },
-          { text: 'Brussels sprouts' },
-          {
-            text: 'test',
-            children: [
-              { text: 'test1' },
-              { text: 'test2', children: [{ text: 'test3' }] },
-            ],
-          },
-        ],
-      },
-      {
-        text: 'Orange',
-        children: [{ text: 'Pumpkins' }, { text: 'Carrots' }],
-      },
-    ],
-  },
-];
+import { QuestionNode } from '../../../models/questionNode';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-survey',
@@ -49,12 +16,16 @@ const TREE_DATA: QuestionNode[] = [
 })
 export class CreateSurveyComponent implements OnInit, OnDestroy {
   public newSurvey: ClientSurvey = {};
-  private subscription!: Subscription;
   treeControl = new NestedTreeControl<QuestionNode>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<QuestionNode>();
+  private subscription!: Subscription;
 
   constructor(private store: Store<State>) {
-    this.dataSource.data = TREE_DATA;
+    this.dataSource.data = [
+      {
+        questionText: new FormControl(''),
+      },
+    ];
   }
 
   ngOnInit(): void {
@@ -70,6 +41,24 @@ export class CreateSurveyComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  addChildren(node: QuestionNode): void {
+    node.children = [this.createQuestionNode(), this.createQuestionNode()];
+    this.refreshTree(this.dataSource);
+  }
+
   hasChild = (_: number, node: QuestionNode): boolean =>
     !!node.children && node.children.length > 0;
+
+  private refreshTree = (
+    dataSource: MatTreeNestedDataSource<QuestionNode>,
+  ): void => {
+    const _data = dataSource.data;
+    dataSource.data = [];
+    dataSource.data = _data;
+  };
+
+  private createQuestionNode = (): QuestionNode => ({
+    questionText: new FormControl('', [Validators.required]),
+    answerText: new FormControl('', [Validators.required]),
+  });
 }
