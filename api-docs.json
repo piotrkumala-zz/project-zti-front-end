@@ -1,28 +1,46 @@
 {
   "openapi": "3.0.1",
-  "info": { "title": "OpenAPI definition", "version": "v0" },
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
   "servers": [
-    { "url": "http://localhost:8080", "description": "Generated server url" }
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
   ],
   "paths": {
     "/api/survey": {
       "get": {
-        "tags": ["survey-controller"],
+        "tags": [
+          "survey-controller"
+        ],
         "operationId": "getSurveys",
         "responses": {
           "200": {
             "description": "OK",
-            "content": { "*/*": { "schema": { "type": "object" } } }
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
           }
         }
       },
       "post": {
-        "tags": ["survey-controller"],
+        "tags": [
+          "survey-controller"
+        ],
         "operationId": "saveSurvey",
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/ClientSurvey" }
+              "schema": {
+                "$ref": "#/components/schemas/CreateSurveyRequest"
+              }
             }
           },
           "required": true
@@ -32,7 +50,9 @@
             "description": "OK",
             "content": {
               "*/*": {
-                "schema": { "$ref": "#/components/schemas/ClientSurvey" }
+                "schema": {
+                  "$ref": "#/components/schemas/ClientSurvey"
+                }
               }
             }
           }
@@ -41,12 +61,16 @@
     },
     "/api/answer": {
       "post": {
-        "tags": ["answer-controller"],
+        "tags": [
+          "answer-controller"
+        ],
         "operationId": "saveAnswer",
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/ClientAnswer" }
+              "schema": {
+                "$ref": "#/components/schemas/ClientAnswer"
+              }
             }
           },
           "required": true
@@ -56,7 +80,9 @@
             "description": "OK",
             "content": {
               "*/*": {
-                "schema": { "$ref": "#/components/schemas/ClientAnswer" }
+                "schema": {
+                  "$ref": "#/components/schemas/ClientAnswer"
+                }
               }
             }
           }
@@ -65,14 +91,19 @@
     },
     "/api/survey/{id}": {
       "get": {
-        "tags": ["survey-controller"],
+        "tags": [
+          "survey-controller"
+        ],
         "operationId": "getSurvey",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": { "type": "string", "format": "uuid" }
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "responses": {
@@ -80,7 +111,9 @@
             "description": "OK",
             "content": {
               "*/*": {
-                "schema": { "$ref": "#/components/schemas/ClientSurvey" }
+                "schema": {
+                  "$ref": "#/components/schemas/ClientSurvey"
+                }
               }
             }
           }
@@ -89,20 +122,31 @@
     },
     "/api/answers/{id}": {
       "get": {
-        "tags": ["answer-controller"],
+        "tags": [
+          "answer-controller"
+        ],
         "operationId": "getSurveyAnswers",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": { "type": "string", "format": "uuid" }
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
-            "content": { "*/*": { "schema": { "type": "object" } } }
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
           }
         }
       }
@@ -110,15 +154,66 @@
   },
   "components": {
     "schemas": {
+      "CreateSurveyQuestion": {
+        "type": "object",
+        "properties": {
+          "questionText": {
+            "type": "string"
+          },
+          "answerText": {
+            "type": "string"
+          },
+          "children": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateSurveyQuestion"
+            }
+          }
+        }
+      },
+      "CreateSurveyRequest": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "questions": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateSurveyQuestion"
+            }
+          }
+        }
+      },
       "ClientQuestion": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "format": "uuid" },
-          "text": { "type": "string" },
-          "right": { "type": "string", "format": "uuid" },
-          "left": { "type": "string", "format": "uuid" },
-          "rightText": { "type": "string" },
-          "leftText": { "type": "string" }
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "text": {
+            "type": "string"
+          },
+          "right": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "left": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "rightText": {
+            "type": "string"
+          },
+          "leftText": {
+            "type": "string"
+          }
         }
       },
       "ClientSurvey": {
@@ -127,11 +222,20 @@
           "question": {
             "uniqueItems": true,
             "type": "array",
-            "items": { "$ref": "#/components/schemas/ClientQuestion" }
+            "items": {
+              "$ref": "#/components/schemas/ClientQuestion"
+            }
           },
-          "title": { "type": "string" },
-          "description": { "type": "string" },
-          "rootQuestion": { "type": "string", "format": "uuid" }
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "rootQuestion": {
+            "type": "string",
+            "format": "uuid"
+          }
         }
       },
       "ClientAnswer": {
@@ -140,16 +244,30 @@
           "answeredQuestions": {
             "uniqueItems": true,
             "type": "array",
-            "items": { "$ref": "#/components/schemas/ClientAnsweredQuestion" }
+            "items": {
+              "$ref": "#/components/schemas/ClientAnsweredQuestion"
+            }
           },
-          "surveyId": { "type": "string", "format": "uuid" }
+          "surveyId": {
+            "type": "string",
+            "format": "uuid"
+          }
         }
       },
       "ClientAnsweredQuestion": {
         "type": "object",
         "properties": {
-          "questionId": { "type": "string", "format": "uuid" },
-          "answeredDirection": { "type": "string", "enum": ["Left", "Right"] }
+          "questionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "answeredDirection": {
+            "type": "string",
+            "enum": [
+              "Left",
+              "Right"
+            ]
+          }
         }
       }
     }
