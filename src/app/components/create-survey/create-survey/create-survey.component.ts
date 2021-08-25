@@ -16,11 +16,7 @@ export class CreateSurveyComponent {
   dataSource = new MatTreeNestedDataSource<QuestionNode>();
 
   constructor() {
-    this.dataSource.data = [
-      {
-        questionText: new FormControl(''),
-      },
-    ];
+    this.dataSource.data = [this.initialNode()];
   }
 
   addChildren(node: QuestionNode): void {
@@ -36,11 +32,7 @@ export class CreateSurveyComponent {
   }
 
   clear(): void {
-    this.dataSource.data = [
-      {
-        questionText: new FormControl(''),
-      },
-    ];
+    this.dataSource.data = [this.initialNode()];
   }
 
   private refreshTree = (
@@ -54,5 +46,9 @@ export class CreateSurveyComponent {
   private createQuestionNode = (): QuestionNode => ({
     questionText: new FormControl('', [Validators.required]),
     answerText: new FormControl('', [Validators.required]),
+  });
+
+  private initialNode = (): QuestionNode => ({
+    questionText: new FormControl('', [Validators.required]),
   });
 }
