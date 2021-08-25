@@ -1,8 +1,4 @@
-<mat-tree
-  [dataSource]="dataSource"
-  [treeControl]="treeControl"
-  class="example-tree"
->
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree">
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
     <app-create-survey-leaf
       (addChildren)="addChildren($event)"
@@ -29,13 +25,16 @@
       ></app-create-survey-leaf>
     </div>
 
-    <div
-      [class.example-tree-invisible]="!treeControl.isExpanded(node)"
-      role="group"
-    >
+    <div [class.tree-invisible]="!treeControl.isExpanded(node)" role="group">
       <ng-container matTreeNodeOutlet></ng-container>
     </div>
   </mat-nested-tree-node>
 </mat-tree>
-<button mat-button (click)="clear()" i18n="cancel">Cancel</button>
-<button mat-button (click)="saveSurvey()" i18n="save">Save</button>
+<div class="buttons">
+  <button mat-raised-button color="warn" (click)="clear()" i18n="cancel">
+    Cancel
+  </button>
+  <button mat-raised-button color="primary" (click)="saveSurvey()" i18n="save">
+    Save
+  </button>
+</div>
