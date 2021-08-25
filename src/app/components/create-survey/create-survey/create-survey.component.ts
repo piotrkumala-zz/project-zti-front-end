@@ -1,9 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { State } from '../../../store/state';
+import { Component } from '@angular/core';
 import { ClientSurvey } from '../../../api/models/client-survey';
-import { setNewSurvey } from '../../../store/newSurvey/newSurvey.actions';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { QuestionNode } from '../../../models/questionNode';
@@ -14,31 +10,17 @@ import { FormControl, Validators } from '@angular/forms';
   templateUrl: './create-survey.component.html',
   styleUrls: ['./create-survey.component.scss'],
 })
-export class CreateSurveyComponent implements OnInit, OnDestroy {
+export class CreateSurveyComponent {
   public newSurvey: ClientSurvey = {};
   treeControl = new NestedTreeControl<QuestionNode>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<QuestionNode>();
-  private subscription!: Subscription;
 
-  constructor(private store: Store<State>) {
+  constructor() {
     this.dataSource.data = [
       {
         questionText: new FormControl(''),
       },
     ];
-  }
-
-  ngOnInit(): void {
-    this.subscription = this.store
-      .select('newSurvey')
-      .subscribe((newSurvey) => {
-        this.newSurvey = newSurvey ?? this.newSurvey;
-      });
-    this.store.dispatch(setNewSurvey({ newSurvey: { title: 'test' } }));
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   addChildren(node: QuestionNode): void {
@@ -48,6 +30,18 @@ export class CreateSurveyComponent implements OnInit, OnDestroy {
 
   hasChild = (_: number, node: QuestionNode): boolean =>
     !!node.children && node.children.length > 0;
+
+  saveSurvey(): void {
+    console.log('saveSurvey');
+  }
+
+  clear(): void {
+    this.dataSource.data = [
+      {
+        questionText: new FormControl(''),
+      },
+    ];
+  }
 
   private refreshTree = (
     dataSource: MatTreeNestedDataSource<QuestionNode>,
