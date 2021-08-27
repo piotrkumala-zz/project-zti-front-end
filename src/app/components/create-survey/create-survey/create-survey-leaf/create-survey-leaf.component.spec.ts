@@ -32,7 +32,7 @@ describe('CreateSurveyLeafComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CreateSurveyLeafComponent);
     component = fixture.componentInstance;
-    component.node = { questionText: new FormControl() };
+    component.node = { questionText: new FormControl(), isLeft: true };
     fixture.detectChanges();
   });
 
