@@ -4,6 +4,8 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { QuestionNode } from '../../../models/questionNode';
 import { FormControl, Validators } from '@angular/forms';
+import { SurveyControllerService } from '../../../api/services/survey-controller.service';
+import { CreateSurveyQuestion } from '../../../api/models/create-survey-question';
 
 @Component({
   selector: 'app-create-survey',
@@ -15,7 +17,7 @@ export class CreateSurveyComponent {
   treeControl = new NestedTreeControl<QuestionNode>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<QuestionNode>();
 
-  constructor() {
+  constructor(private service: SurveyControllerService) {
     this.dataSource.data = [this.initialNode()];
   }
 
@@ -27,8 +29,21 @@ export class CreateSurveyComponent {
   hasChild = (_: number, node: QuestionNode): boolean =>
     !!node.children && node.children.length > 0;
 
-  saveSurvey(): void {
-    console.log('saveSurvey');
+  async saveSurvey(): Promise<void> {
+    const nodeToQuestion = (node: QuestionNode): CreateSurveyQuestion => ({
+      questionText: node.questionText.value,
+      answerText: node.answerText?.value,
+      children: node.children?.map(nodeToQuestion),
+    });
+    await this.service
+      .saveSurvey({
+        body: {
+          title: 'testTitle',
+          description: 'testDescription',
+          questions: this.dataSource.data.map(nodeToQuestion),
+        },
+      })
+      .toPromise();
   }
 
   clear(): void {
