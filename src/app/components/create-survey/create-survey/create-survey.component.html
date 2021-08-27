@@ -1,3 +1,23 @@
+<div class="inputs">
+  <mat-form-field appearance="fill">
+    <mat-label i18n="survey title">Survey title</mat-label>
+    <input required type="text" matInput [formControl]="titleControl" />
+    <mat-error *ngIf="titleControl.hasError('required')" i18n="Field required">
+      This field is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label i18n="survey description">Survey description</mat-label>
+    <textarea required type="text" matInput [formControl]="descriptionControl">
+    </textarea>
+    <mat-error
+      *ngIf="descriptionControl.hasError('required')"
+      i18n="Field required"
+    >
+      This field is required
+    </mat-error>
+  </mat-form-field>
+</div>
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree">
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
     <app-create-survey-leaf

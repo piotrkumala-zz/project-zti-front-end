@@ -32,8 +32,20 @@
 .buttons {
   margin-left: 10px;
   margin-top: 16px;
+  display: flex;
+  justify-content: center;
 
   button {
     margin-right: 10px;
+  }
+}
+
+.inputs {
+  margin-left: 10px;
+  margin-top: 16px;
+  margin-right: 10px;
+
+  mat-form-field {
+    display: block;
   }
 }

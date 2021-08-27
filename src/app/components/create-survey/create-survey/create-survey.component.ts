@@ -16,6 +16,8 @@ export class CreateSurveyComponent {
   public newSurvey: ClientSurvey = {};
   treeControl = new NestedTreeControl<QuestionNode>((node) => node.children);
   dataSource = new MatTreeNestedDataSource<QuestionNode>();
+  titleControl = new FormControl('', [Validators.required]);
+  descriptionControl = new FormControl('', [Validators.required]);
 
   constructor(private service: SurveyControllerService) {
     this.dataSource.data = [this.initialNode()];
@@ -38,8 +40,8 @@ export class CreateSurveyComponent {
     await this.service
       .saveSurvey({
         body: {
-          title: 'testTitle',
-          description: 'testDescription',
+          title: this.titleControl.value,
+          description: this.descriptionControl.value,
           questions: this.dataSource.data.map(nodeToQuestion),
         },
       })
