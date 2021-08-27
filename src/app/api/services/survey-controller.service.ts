@@ -143,7 +143,7 @@ export class SurveyControllerService extends BaseService {
     return this.http
       .request(
         rb.build({
-          responseType: 'blob',
+          responseType: 'json',
           accept: '*/*',
         }),
       )
