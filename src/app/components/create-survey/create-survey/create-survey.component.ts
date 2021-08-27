@@ -24,7 +24,10 @@ export class CreateSurveyComponent {
   }
 
   addChildren(node: QuestionNode): void {
-    node.children = [this.createQuestionNode(), this.createQuestionNode()];
+    node.children = [
+      this.createQuestionNode(true),
+      this.createQuestionNode(false),
+    ];
     this.refreshTree(this.dataSource);
   }
 
@@ -36,6 +39,7 @@ export class CreateSurveyComponent {
       questionText: node.questionText.value,
       answerText: node.answerText?.value,
       children: node.children?.map(nodeToQuestion),
+      isLeft: node.isLeft,
     });
     await this.service
       .saveSurvey({
@@ -60,12 +64,14 @@ export class CreateSurveyComponent {
     dataSource.data = _data;
   };
 
-  private createQuestionNode = (): QuestionNode => ({
+  private createQuestionNode = (isLeft: boolean): QuestionNode => ({
     questionText: new FormControl('', [Validators.required]),
     answerText: new FormControl('', [Validators.required]),
+    isLeft: isLeft,
   });
 
   private initialNode = (): QuestionNode => ({
     questionText: new FormControl('', [Validators.required]),
+    isLeft: false,
   });
 }

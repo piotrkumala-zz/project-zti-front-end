@@ -181,6 +181,9 @@
           "description": {
             "type": "string"
           },
+          "isLeft": {
+            "type": "boolean"
+          },
           "questions": {
             "uniqueItems": true,
             "type": "array",
