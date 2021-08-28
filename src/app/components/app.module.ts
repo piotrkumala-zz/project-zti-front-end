@@ -12,11 +12,13 @@ import { CreateSurveyComponent } from './create-survey/create-survey/create-surv
 import { AnswerSurveyComponent } from './answer-survey/answer-survey/answer-survey.component';
 import { reducers } from '../store/state';
 import { CreateSurveyModule } from './create-survey/create-survey.module';
+import { ThankYouForAnswerComponent } from './answer-survey/thank-you-for-answer/thank-you-for-answer.component';
 
 const routes: Routes = [
   { path: 'answer', component: AnswerSurveyComponent },
   { path: 'create', component: CreateSurveyComponent },
   { path: '', redirectTo: '/answer', pathMatch: 'full' },
+  { path: 'thanks', component: ThankYouForAnswerComponent },
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ import { MatRadioChange } from '@angular/material/radio';
 import { ClientQuestion } from '../../../api/models/client-question';
 import { QuestionWithAnswers } from '../../../models/questionWithAnswers';
 import { AnswerControllerService } from '../../../api/services/answer-controller.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-answer-survey',
@@ -24,6 +25,7 @@ export class AnswerSurveyComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<State>,
     private answerService: AnswerControllerService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -74,6 +76,8 @@ export class AnswerSurveyComponent implements OnInit, OnDestroy {
       questionId: x.id,
       answeredDirection: x.answeredId === x.left ? 'Left' : 'Right',
     }));
-    await this.answerService.saveAnswer({ body: this.answer }).toPromise();
+    this.answerService.saveAnswer({ body: this.answer }).subscribe(async () => {
+      await this.router.navigate(['/thanks']);
+    });
   }
 }
