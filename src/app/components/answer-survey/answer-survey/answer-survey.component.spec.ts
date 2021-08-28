@@ -4,6 +4,7 @@ import { AnswerSurveyComponent } from './answer-survey.component';
 import { provideMockStore } from '@ngrx/store/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatStepper } from '@angular/material/stepper';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AnswerSurveyComponent', () => {
   let component: AnswerSurveyComponent;
@@ -14,7 +15,7 @@ describe('AnswerSurveyComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AnswerSurveyComponent, MatStepper],
       providers: [provideMockStore({ initialState })],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
     }).compileComponents();
   });
 
