@@ -285,7 +285,7 @@ export class RequestBuilder {
           val = [val];
         }
         for (const v of val) {
-          const formValue = RequestBuilder.formDataValue(v);
+          const formValue = this.formDataValue(v);
           if (formValue !== null) {
             pairs.push([key, formValue]);
           }
@@ -302,13 +302,13 @@ export class RequestBuilder {
           const val = value[key];
           if (val instanceof Array) {
             for (const v of val) {
-              const toAppend = RequestBuilder.formDataValue(v);
+              const toAppend = this.formDataValue(v);
               if (toAppend !== null) {
                 formData.append(key, toAppend);
               }
             }
           } else {
-            const toAppend = RequestBuilder.formDataValue(val);
+            const toAppend = this.formDataValue(val);
             if (toAppend !== null) {
               formData.set(key, toAppend);
             }
@@ -380,7 +380,7 @@ export class RequestBuilder {
     );
   }
 
-  private static formDataValue(value: any): any {
+  private formDataValue(value: any): any {
     if (value === null || value === undefined) {
       return null;
     }

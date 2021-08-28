@@ -51,7 +51,7 @@
             "content": {
               "*/*": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClientSurvey"
+                  "$ref": "#/components/schemas/CreateSurveyResponse"
                 }
               }
             }
@@ -163,12 +163,8 @@
           "answerText": {
             "type": "string"
           },
-          "children": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CreateSurveyQuestion"
-            }
+          "isLeft": {
+            "type": "boolean"
           }
         }
       },
@@ -181,15 +177,53 @@
           "description": {
             "type": "string"
           },
-          "isLeft": {
-            "type": "boolean"
-          },
           "questions": {
             "uniqueItems": true,
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CreateSurveyQuestion"
             }
+          }
+        }
+      },
+      "CreateSurveyResponse": {
+        "type": "object",
+        "properties": {
+          "surveyId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ClientAnswer": {
+        "type": "object",
+        "properties": {
+          "answeredQuestions": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClientAnsweredQuestion"
+            }
+          },
+          "surveyId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ClientAnsweredQuestion": {
+        "type": "object",
+        "properties": {
+          "questionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "answeredDirection": {
+            "type": "string",
+            "enum": [
+              "Left",
+              "Right"
+            ]
           }
         }
       },
@@ -238,38 +272,6 @@
           "rootQuestion": {
             "type": "string",
             "format": "uuid"
-          }
-        }
-      },
-      "ClientAnswer": {
-        "type": "object",
-        "properties": {
-          "answeredQuestions": {
-            "uniqueItems": true,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ClientAnsweredQuestion"
-            }
-          },
-          "surveyId": {
-            "type": "string",
-            "format": "uuid"
-          }
-        }
-      },
-      "ClientAnsweredQuestion": {
-        "type": "object",
-        "properties": {
-          "questionId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "answeredDirection": {
-            "type": "string",
-            "enum": [
-              "Left",
-              "Right"
-            ]
           }
         }
       }

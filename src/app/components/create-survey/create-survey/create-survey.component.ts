@@ -56,7 +56,7 @@ export class CreateSurveyComponent {
       })
       .subscribe((x) => {
         const dialogRef = this.dialog.open(CreateSurveySummaryComponent, {
-          data: { surveyId: x.title },
+          data: { surveyId: x.surveyId },
         });
         dialogRef.afterClosed().subscribe(() => {
           this.clear();
