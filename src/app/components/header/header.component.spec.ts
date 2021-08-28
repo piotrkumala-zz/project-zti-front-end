@@ -5,11 +5,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { provideMockStore } from '@ngrx/store/testing';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  const initialState = { survey: {}, id: '' };
+  const initialState = { survey: {}, id: '', newSurvey: {} };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -18,6 +19,7 @@ describe('HeaderComponent', () => {
         { provide: MatDialog, useValue: {} },
         provideMockStore({ initialState }),
       ],
+      imports: [RouterTestingModule],
     }).compileComponents();
   });
 

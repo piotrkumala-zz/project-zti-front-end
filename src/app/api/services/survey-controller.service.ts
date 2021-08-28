@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
 import { ClientSurvey } from '../models/client-survey';
+import { CreateSurveyRequest } from '../models/create-survey-request';
+import { CreateSurveyResponse } from '../models/create-survey-response';
 
 @Injectable({
   providedIn: 'root',
@@ -83,8 +85,8 @@ export class SurveyControllerService extends BaseService {
    * This method sends `application/json` and handles request body of type `application/json`.
    */
   saveSurvey$Response(params: {
-    body: ClientSurvey;
-  }): Observable<StrictHttpResponse<ClientSurvey>> {
+    body: CreateSurveyRequest;
+  }): Observable<StrictHttpResponse<CreateSurveyResponse>> {
     const rb = new RequestBuilder(
       this.rootUrl,
       SurveyControllerService.SaveSurveyPath,
@@ -104,7 +106,7 @@ export class SurveyControllerService extends BaseService {
       .pipe(
         filter((r: any) => r instanceof HttpResponse),
         map((r: HttpResponse<any>) => {
-          return r as StrictHttpResponse<ClientSurvey>;
+          return r as StrictHttpResponse<CreateSurveyResponse>;
         }),
       );
   }
@@ -115,9 +117,14 @@ export class SurveyControllerService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  saveSurvey(params: { body: ClientSurvey }): Observable<ClientSurvey> {
+  saveSurvey(params: {
+    body: CreateSurveyRequest;
+  }): Observable<CreateSurveyResponse> {
     return this.saveSurvey$Response(params).pipe(
-      map((r: StrictHttpResponse<ClientSurvey>) => r.body as ClientSurvey),
+      map(
+        (r: StrictHttpResponse<CreateSurveyResponse>) =>
+          r.body as CreateSurveyResponse,
+      ),
     );
   }
 

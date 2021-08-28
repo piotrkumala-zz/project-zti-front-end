@@ -21,9 +21,13 @@ export class AppComponent implements OnDestroy {
     private activatedRoute: ActivatedRoute,
   ) {
     this.subscription = store.select('id').subscribe((id) => {
-      this.surveyService
-        .getSurvey({ id })
-        .subscribe((data) => this.store.dispatch(setSurvey({ survey: data })));
+      if (id) {
+        this.surveyService
+          .getSurvey({ id })
+          .subscribe((data) =>
+            this.store.dispatch(setSurvey({ survey: data })),
+          );
+      }
     });
     this.subscription.add(
       activatedRoute.queryParams.subscribe((x) => {

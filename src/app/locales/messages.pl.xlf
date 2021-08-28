@@ -3,22 +3,73 @@
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="7114960290558997770" datatype="html">
-        <source>Save answers</source>
-        <target>Zapisz odpowiedzi</target>
+        <source> Save answers </source>
+        <target> Zapisz odpowiedź</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/components/answer-survey/answer-survey/answer-survey.component.html
-          </context>
-          <context context-type="linenumber">38,40</context>
+          <context context-type="sourcefile">src/app/components/answer-survey/answer-survey/answer-survey.component.html</context>
+          <context context-type="linenumber">41,43</context>
         </context-group>
         <note priority="1" from="description">Save answers</note>
+      </trans-unit>
+      <trans-unit id="2932980784121826967" datatype="html">
+        <source>Answer text</source>
+        <target>Treść odpowiedzi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey-leaf/create-survey-leaf.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Answer text</note>
+      </trans-unit>
+      <trans-unit id="3498970204767096106" datatype="html">
+        <source> This field is required </source>
+        <target> Pole wymagane </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey-leaf/create-survey-leaf.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey-leaf/create-survey-leaf.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/survey-search-dialog/survey-search-dialog.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+        <note priority="1" from="description">Field required</note>
+      </trans-unit>
+      <trans-unit id="5713716699704484372" datatype="html">
+        <source>Question text</source>
+        <target>Treść pytania</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey-leaf/create-survey-leaf.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">Question text</note>
+      </trans-unit>
+      <trans-unit id="2330577642930707695" datatype="html">
+        <source> Cancel </source>
+        <target> Anuluj </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey.component.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+        <note priority="1" from="description">cancel</note>
+      </trans-unit>
+      <trans-unit id="3620188369327429839" datatype="html">
+        <source> Save </source>
+        <target> Zapisz </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey.component.html</context>
+          <context context-type="linenumber">38,39</context>
+        </context-group>
+        <note priority="1" from="description">save</note>
       </trans-unit>
       <trans-unit id="936665471524982924" datatype="html">
         <source>ZTI - Survey system</source>
         <target>ZTI - system ankietowy</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/header/header.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
         <note priority="1" from="description">appName</note>
       </trans-unit>
@@ -27,17 +78,24 @@
         <target>Wyszukaj ankietę</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/header/header.component.html</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">5,6</context>
         </context-group>
         <note priority="1" from="description">searchForSurvey</note>
       </trans-unit>
+      <trans-unit id="144395624723922520" datatype="html">
+        <source>Add new survey</source>
+        <target>Dodaj nową ankietę</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.component.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+        <note priority="1" from="description">addNewSurvey</note>
+      </trans-unit>
       <trans-unit id="501677598084231891" datatype="html">
         <source>Insert survey id</source>
-        <target>Wpisz id ankiety</target>
+        <target>Wprowadź id ankiety</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/components/header/survey-search-dialog/survey-search-dialog.component.html
-          </context>
+          <context context-type="sourcefile">src/app/components/header/survey-search-dialog/survey-search-dialog.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
         <note priority="1" from="description">Insert survey id</note>
@@ -46,42 +104,25 @@
         <source>Survey Id</source>
         <target>Id ankiety</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/components/header/survey-search-dialog/survey-search-dialog.component.html
-          </context>
+          <context context-type="sourcefile">src/app/components/header/survey-search-dialog/survey-search-dialog.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
         <note priority="1" from="description">Survey Id</note>
       </trans-unit>
-      <trans-unit id="3498970204767096106" datatype="html">
-        <source>This field is required</source>
-        <target>Pole wymagane</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/components/header/survey-search-dialog/survey-search-dialog.component.html
-          </context>
-          <context context-type="linenumber">7,8</context>
-        </context-group>
-        <note priority="1" from="description">Field required</note>
-      </trans-unit>
       <trans-unit id="3884042608461765727" datatype="html">
-        <source>Enter proper UUID</source>
-        <target>Podaj poprawny format UUID</target>
+        <source> Enter proper UUID </source>
+        <target> Wprowadź poprawne UUID </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/components/header/survey-search-dialog/survey-search-dialog.component.html
-          </context>
+          <context context-type="sourcefile">src/app/components/header/survey-search-dialog/survey-search-dialog.component.html</context>
           <context context-type="linenumber">10,11</context>
         </context-group>
         <note priority="1" from="description">Bad UUID format</note>
       </trans-unit>
       <trans-unit id="3394880135309962358" datatype="html">
-        <source>Ok</source>
-        <target>Ok</target>
+        <source> Ok </source>
+        <target> Ok </target>
         <context-group purpose="location">
-          <context context-type="sourcefile">
-            src/app/components/header/survey-search-dialog/survey-search-dialog.component.html
-          </context>
+          <context context-type="sourcefile">src/app/components/header/survey-search-dialog/survey-search-dialog.component.html</context>
           <context context-type="linenumber">21,22</context>
         </context-group>
         <note priority="1" from="description">Ok</note>

@@ -1,0 +1,34 @@
+<div>
+  <mat-form-field
+    *ngIf="node.answerText"
+    appearance="fill"
+    class="example-form-field"
+  >
+    <mat-label i18n="Answer text">Answer text</mat-label>
+    <input required [formControl]="answerFromControl()" matInput type="text" />
+    <mat-error
+      *ngIf="answerFromControl().hasError('required')"
+      i18n="Field required"
+    >
+      This field is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="example-form-field">
+    <mat-label i18n="Question text">Question text</mat-label>
+    <input required [formControl]="node.questionText" matInput type="text" />
+    <mat-error
+      *ngIf="node.questionText.hasError('required')"
+      i18n="Field required"
+    >
+      This field is required
+    </mat-error>
+  </mat-form-field>
+  <button
+    (click)="addChildren.emit(node)"
+    *ngIf="allowAdd"
+    color="primary"
+    mat-icon-button
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

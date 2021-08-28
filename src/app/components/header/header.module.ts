@@ -9,6 +9,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [HeaderComponent, SurveySearchDialogComponent],
@@ -21,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    RouterModule,
   ],
   exports: [HeaderComponent],
 })

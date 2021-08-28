@@ -242,19 +242,6 @@ export class RequestBuilder {
     public method: string,
   ) {}
 
-  private static formDataValue(value: any): any {
-    if (value === null || value === undefined) {
-      return null;
-    }
-    if (value instanceof Blob) {
-      return value;
-    }
-    if (typeof value === 'object') {
-      return JSON.stringify(value);
-    }
-    return String(value);
-  }
-
   /**
    * Sets a path parameter
    */
@@ -298,7 +285,7 @@ export class RequestBuilder {
           val = [val];
         }
         for (const v of val) {
-          const formValue = RequestBuilder.formDataValue(v);
+          const formValue = this.formDataValue(v);
           if (formValue !== null) {
             pairs.push([key, formValue]);
           }
@@ -315,13 +302,13 @@ export class RequestBuilder {
           const val = value[key];
           if (val instanceof Array) {
             for (const v of val) {
-              const toAppend = RequestBuilder.formDataValue(v);
+              const toAppend = this.formDataValue(v);
               if (toAppend !== null) {
                 formData.append(key, toAppend);
               }
             }
           } else {
-            const toAppend = RequestBuilder.formDataValue(val);
+            const toAppend = this.formDataValue(val);
             if (toAppend !== null) {
               formData.set(key, toAppend);
             }
@@ -391,5 +378,18 @@ export class RequestBuilder {
         reportProgress: options.reportProgress,
       },
     );
+  }
+
+  private formDataValue(value: any): any {
+    if (value === null || value === undefined) {
+      return null;
+    }
+    if (value instanceof Blob) {
+      return value;
+    }
+    if (typeof value === 'object') {
+      return JSON.stringify(value);
+    }
+    return String(value);
   }
 }
