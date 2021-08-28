@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 describe('CreateSurveyComponent', () => {
   let component: CreateSurveyComponent;
@@ -26,6 +27,10 @@ describe('CreateSurveyComponent', () => {
         BrowserAnimationsModule,
         MatIconModule,
         HttpClientTestingModule,
+      ],
+      providers: [
+        { provide: MatDialog, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: { data: { surveyId: '' } } },
       ],
     }).compileComponents();
   });
