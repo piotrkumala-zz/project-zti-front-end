@@ -8,9 +8,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { CreateSurveyLeafComponent } from './create-survey/create-survey-leaf/create-survey-leaf.component';
+import { CreateSurveySummaryComponent } from './create-survey/create-survey-summary/create-survey-summary.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [CreateSurveyComponent, CreateSurveyLeafComponent],
+  declarations: [
+    CreateSurveyComponent,
+    CreateSurveyLeafComponent,
+    CreateSurveySummaryComponent,
+  ],
   imports: [
     CommonModule,
     MatTreeModule,
@@ -20,6 +26,7 @@ import { CreateSurveyLeafComponent } from './create-survey/create-survey-leaf/cr
     FormsModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
   exports: [CreateSurveyComponent],
 })

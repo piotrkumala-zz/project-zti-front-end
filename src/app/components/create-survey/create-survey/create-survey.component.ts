@@ -6,6 +6,8 @@ import { QuestionNode } from '../../../models/questionNode';
 import { FormControl, Validators } from '@angular/forms';
 import { SurveyControllerService } from '../../../api/services/survey-controller.service';
 import { CreateSurveyQuestion } from '../../../api/models/create-survey-question';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateSurveySummaryComponent } from './create-survey-summary/create-survey-summary.component';
 
 @Component({
   selector: 'app-create-survey',
@@ -19,7 +21,10 @@ export class CreateSurveyComponent {
   titleControl = new FormControl('', [Validators.required]);
   descriptionControl = new FormControl('', [Validators.required]);
 
-  constructor(private service: SurveyControllerService) {
+  constructor(
+    private service: SurveyControllerService,
+    private dialog: MatDialog,
+  ) {
     this.dataSource.data = [this.initialNode()];
   }
 
@@ -34,14 +39,14 @@ export class CreateSurveyComponent {
   hasChild = (_: number, node: QuestionNode): boolean =>
     !!node.children && node.children.length > 0;
 
-  async saveSurvey(): Promise<void> {
+  saveSurvey(): void {
     const nodeToQuestion = (node: QuestionNode): CreateSurveyQuestion => ({
       questionText: node.questionText.value,
       answerText: node.answerText?.value,
       children: node.children?.map(nodeToQuestion),
       isLeft: node.isLeft,
     });
-    await this.service
+    this.service
       .saveSurvey({
         body: {
           title: this.titleControl.value,
@@ -49,7 +54,14 @@ export class CreateSurveyComponent {
           questions: this.dataSource.data.map(nodeToQuestion),
         },
       })
-      .toPromise();
+      .subscribe((x) => {
+        const dialogRef = this.dialog.open(CreateSurveySummaryComponent, {
+          data: { surveyId: x.title },
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.clear();
+        });
+      });
   }
 
   clear(): void {
