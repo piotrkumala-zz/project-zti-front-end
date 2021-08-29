@@ -80,3 +80,10 @@
 
         - name: Test
           run: npm run test:prod
+
+        - name: Comment Test Coverage
+          uses: AthleticNet/comment-test-coverage@1.1
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            path: coverage/coverage-summary.json
+            title: Karma Test Coverage
