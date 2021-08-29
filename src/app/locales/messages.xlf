@@ -10,6 +10,22 @@
         </context-group>
         <note priority="1" from="description">Save answers</note>
       </trans-unit>
+      <trans-unit id="7366364094392163464" datatype="html">
+        <source>Answer saved!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/answer-survey/thank-you-for-answer/thank-you-for-answer.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Answer saved</note>
+      </trans-unit>
+      <trans-unit id="1038043684574650651" datatype="html">
+        <source>Thank you for filling the survey. Have a nice day!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/answer-survey/thank-you-for-answer/thank-you-for-answer.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Thank you</note>
+      </trans-unit>
       <trans-unit id="2932980784121826967" datatype="html">
         <source>Answer text</source>
         <context-group purpose="location">
@@ -29,6 +45,14 @@
           <context context-type="linenumber">23,24</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey.component.html</context>
+          <context context-type="linenumber">17,18</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/header/survey-search-dialog/survey-search-dialog.component.html</context>
           <context context-type="linenumber">7,8</context>
         </context-group>
@@ -42,11 +66,43 @@
         </context-group>
         <note priority="1" from="description">Question text</note>
       </trans-unit>
+      <trans-unit id="1014713006328075523" datatype="html">
+        <source>Survey created successfully</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey-summary/create-survey-summary.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">survey creation sucess</note>
+      </trans-unit>
+      <trans-unit id="8720977247725652816" datatype="html">
+        <source>Ok</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey-summary/create-survey-summary.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Ok</note>
+      </trans-unit>
+      <trans-unit id="8456885213615973092" datatype="html">
+        <source>Survey title</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">survey title</note>
+      </trans-unit>
+      <trans-unit id="5120156956016256131" datatype="html">
+        <source>Survey description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">survey description</note>
+      </trans-unit>
       <trans-unit id="2330577642930707695" datatype="html">
         <source> Cancel </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey.component.html</context>
-          <context context-type="linenumber">35,36</context>
+          <context context-type="linenumber">55,56</context>
         </context-group>
         <note priority="1" from="description">cancel</note>
       </trans-unit>
@@ -54,7 +110,7 @@
         <source> Save </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey.component.html</context>
-          <context context-type="linenumber">38,39</context>
+          <context context-type="linenumber">58,59</context>
         </context-group>
         <note priority="1" from="description">save</note>
       </trans-unit>

@@ -11,6 +11,24 @@
         </context-group>
         <note priority="1" from="description">Save answers</note>
       </trans-unit>
+      <trans-unit id="7366364094392163464" datatype="html">
+        <source>Answer saved!</source>
+        <target>Opowiedź zapisana!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/answer-survey/thank-you-for-answer/thank-you-for-answer.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Answer saved</note>
+      </trans-unit>
+      <trans-unit id="1038043684574650651" datatype="html">
+        <source>Thank you for filling the survey. Have a nice day!</source>
+        <target>Dziękujemy za wypełnienie ankiety. Miłego dnia!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/answer-survey/thank-you-for-answer/thank-you-for-answer.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Thank you</note>
+      </trans-unit>
       <trans-unit id="2932980784121826967" datatype="html">
         <source>Answer text</source>
         <target>Treść odpowiedzi</target>
@@ -45,6 +63,42 @@
           <context context-type="linenumber">17</context>
         </context-group>
         <note priority="1" from="description">Question text</note>
+      </trans-unit>
+      <trans-unit id="1014713006328075523" datatype="html">
+        <source>Survey created successfully</source>
+        <target>Ankieta stworzona pomyślnie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey-summary/create-survey-summary.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">survey creation sucess</note>
+      </trans-unit>
+      <trans-unit id="8720977247725652816" datatype="html">
+        <source>Ok</source>
+        <target>Ok</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey-summary/create-survey-summary.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Ok</note>
+      </trans-unit>
+      <trans-unit id="8456885213615973092" datatype="html">
+        <source>Survey title</source>
+        <target>Tytuł ankiety</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">survey title</note>
+      </trans-unit>
+      <trans-unit id="5120156956016256131" datatype="html">
+        <source>Survey description</source>
+        <target>Opis ankiety</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/create-survey/create-survey/create-survey.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">survey description</note>
       </trans-unit>
       <trans-unit id="2330577642930707695" datatype="html">
         <source> Cancel </source>
