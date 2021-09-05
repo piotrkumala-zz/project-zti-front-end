@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://project-zti.azurewebsites.nett',
+  baseUrl: 'https://project-zti.azurewebsites.net',
 };
 
 /*
